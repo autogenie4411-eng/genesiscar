@@ -226,8 +226,8 @@
 
   const SWIPER_DELAY = 2200; // 한 카드가 머무는 시간(ms)
   const SWIPER_SPEED = 1000; // 옆으로 스르륵 넘어가는 시간(ms)
-  const MAX_REVIEWS = 800; // 연간 후기 전체 목록까지 보존
-  const ROLLING_MONTHS = 3; // 메인 캐러셀은 최근 3개월만 표시
+  const MAX_REVIEWS = 800; // 최근 12개월 후기 전체 목록까지 보존
+  const ROLLING_MONTHS = 12; // 제네시스 단일 브랜드: 최근 12개월 후기 표시
   const MIN_LOCAL_REVIEWS = 20;
   const SOURCE_LIST_PAGES = 30;
   const SOURCE_MAX_DETAIL_FETCHES = 360;
@@ -235,8 +235,8 @@
   const SOURCE_CACHE_TTL = 30 * 60 * 1000;
   const LOCAL_FRESH_DAYS = 14; // 오래된 JSON을 최신 후기처럼 먼저 노출하지 않는다.
 
-  let renderedReviews = []; // 연간(연초 3개월은 전년도 포함) 전체 후기
-  let rollingReviews = [];  // 메인 화면 최근 3개월
+  let renderedReviews = []; // 최근 12개월 전체 후기
+  let rollingReviews = [];  // 메인 화면 최근 12개월
   let reviewDialog = null;
   let reviewDialogReturnFocus = null;
   let reviewHistoryActive = false;
@@ -301,8 +301,7 @@
     return date;
   }
 
-  // 연도 기준과 달력상의 3개월은 한국 날짜로 판정한다.
-  // 1~3월은 신규 후기 부족을 방지하기 위해 전년도 1월부터 함께 표시한다.
+  // 국내 게시판 날짜와 12개월 구간은 한국 날짜를 기준으로 계산한다.
   function koreaYearAndMonth() {
     const values = new Intl.DateTimeFormat('en-US', {
       timeZone: 'Asia/Seoul', year: 'numeric', month: 'numeric', day: 'numeric'
@@ -312,8 +311,9 @@
   }
 
   function galleryStartDate() {
-    const { year, month } = koreaYearAndMonth();
-    return new Date(year - (month <= 3 ? 1 : 0), 0, 1);
+    // 메인/전체 보기 모두 최근 12개월 후기 수집 범위를 사용한다.
+    // 전년도 하반기 후기까지 데이터에 포함되어야 1년 노출이 정상 작동한다.
+    return rollingStartDate();
   }
 
   function rollingStartDate() {
@@ -457,7 +457,7 @@
     requestAnimationFrame(() => window.scrollTo(x, y));
   }
 
-  // 전체 후기 보기는 올해(1~3월에는 전년도 포함)를 모달 카드 목록으로 표시한다.
+  // 전체 후기 보기는 최근 12개월 자료를 모달 카드 목록으로 표시한다.
   function reviewGridTemplate(review) {
     const title = cleanReviewTitle(review.title);
     const date = formatReviewDate(review.date);
@@ -943,6 +943,17 @@
     reviewSwiper = null;
   }
 
+  function carouselCardMarkup(items) {
+    if (!items.length) return '';
+    // 제네시스는 후기 개수가 적어 PC에서 2~4장만으로는 Swiper 11의
+    // loop 모드가 끝에서 중단될 수 있다. 실제 후기만 순서대로 반복 배치해
+    // 마지막 후기 다음에 첫 후기가 빈 공간 없이 나타나게 한다.
+    // 한 건뿐이라면 같은 후기만 연속 노출하지 않고 슬라이드를 정지한다.
+    const repeatCount = items.length > 1 ? Math.ceil(16 / items.length) : 1;
+    const originalCards = items.map(cardTemplate).join('');
+    return originalCards.repeat(repeatCount);
+  }
+
   function initReviewSwiper() {
     destroyReviewSwiper();
     if (!rollingReviews.length || hiddenAfterBrandSelection) return;
@@ -1046,7 +1057,7 @@
     }
 
     section.hidden = false;
-    track.innerHTML = rollingReviews.length ? rollingReviews.map(cardTemplate).join('') : `<article class="review-card review-card--loading"><div class="review-card__body"><strong>최근 3개월 출고 후기가 없습니다.</strong><p>전체 후기 보기를 누르면 이전 출고 후기도 확인할 수 있습니다.</p></div></article>`;
+    track.innerHTML = rollingReviews.length ? carouselCardMarkup(rollingReviews) : `<article class="review-card review-card--loading"><div class="review-card__body"><strong>최근 12개월 출고 후기가 없습니다.</strong><p>전체 후기 보기를 누르면 이전 출고 후기도 확인할 수 있습니다.</p></div></article>`;
     bindImageFallbacks();
 
     // DOM 크기가 계산된 다음 Swiper를 초기화해야 slidesPerView:auto가 정확하게 작동한다.
