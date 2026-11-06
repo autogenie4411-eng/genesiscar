@@ -6,6 +6,16 @@
 
   const SOURCE = 'https://www.agautoplan.com/review';
   const READER_PREFIX = 'https://r.jina.ai/';
+  // 이 사이트에서는 실제 제네시스 출고 후기만 노출합니다.
+  // 수집 자료에 brand가 비어 있으면 제목/모델의 G70·G80·G90·GV 시리즈를 확인합니다.
+  // 타 브랜드가 명확히 기록된 경우에는 모델명의 우연한 일치를 허용하지 않습니다.
+  function isGenesisReview(review = {}) {
+    const brand = String(review.brand || '').trim().toLocaleLowerCase('ko-KR');
+    if (/제네시스|genesis/.test(brand)) return true;
+    if (brand && !/^(?:국산차|국산|domestic|기타|미확인)$/.test(brand)) return false;
+    const text = `${review.title || ''} ${review.model || ''}`.toLocaleLowerCase('ko-KR');
+    return /제네시스|genesis/.test(text) || /(?:^|[^a-z0-9])(?:g\s*[-]?\s*(?:70|80|90)|gv\s*[-]?\s*(?:60|70|80))(?=$|[^a-z0-9])/i.test(text);
+  }
   // 후기 분류는 메이커 + 국내/수입 차종명을 함께 검사합니다.
   // 차종명이 단독으로 나오는 E200, 아토3, 모델Y 등의 후기에도 적용합니다.
   function reviewMarket(review = {}) {
@@ -360,8 +370,8 @@
     // 날짜로 다시 sort하지 않아 실제 후기 카테고리의 최신 → 과거 순서가 뒤섞이지 않는다.
     const prepared = (items || [])
       .filter(review => Boolean(review?.title))
-      // 국산차 전용: 브랜드명 없는 E200/BYD 등 수입 모델도 제외.
-      .filter(review => reviewMarket(review) === 'domestic')
+      // 제네시스 전용: 메인 슬라이드와 전체 후기 팝업 모두 동일한 필터를 사용합니다.
+      .filter(isGenesisReview)
       .map((review, inputOrder) => ({ ...review, _inputOrder: inputOrder, _timestamp: reviewTimestamp(review) }))
       .filter(review => review._timestamp >= cutoff.getTime())
       .sort((a, b) => {
@@ -525,12 +535,12 @@
     const dialog = ensureReviewDialog();
     reviewDialogView = 'list';
     dialog.classList.add('autogenie-review-dialog--gallery');
-    dialog.setAttribute('aria-label', '오토지니 전체 출고 후기 목록');
+    dialog.setAttribute('aria-label', '제네시스 전체 출고 후기 목록');
     dialog.innerHTML = `<div class="review-gallery-panel">
       <header class="review-gallery-head">
         <div class="review-gallery-head__info">
           <span class="review-detail-eyebrow">REAL DELIVERY REVIEW</span>
-          <h2>오토지니 실제 출고 후기</h2>
+          <h2>제네시스 실제 출고 후기</h2>
           <p>${(() => { const { year, month } = koreaYearAndMonth(); return month <= 3 ? `${year - 1}~${year}년 출고 후기` : `${year}년 출고 후기`; })()} · 원하는 후기를 선택해 주세요.</p>
         </div>
         <button type="button" class="review-detail-close" data-review-close aria-label="후기 목록 닫기">×</button>

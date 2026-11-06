@@ -10735,7 +10735,7 @@ const vehicleCatalog = [
     const markets = typeof MARKETS_FOR_REVIEWS === "undefined" ? [DEFAULT_MARKET] : MARKETS_FOR_REVIEWS;
     const candidates = [];
 
-    for (const brand of vehicleCatalog.filter(item => markets.includes(item.market))) {
+    for (const brand of vehicleCatalog.filter(item => markets.includes(item.market) && item.name === "제네시스")) {
       const registeredBrand = reviewVehicleNormalize(brand.name);
       if (normalizedBrand && !normalizedBrand.includes(registeredBrand) &&
           !registeredBrand.includes(normalizedBrand)) continue;
@@ -10778,7 +10778,7 @@ const vehicleCatalog = [
     const wantsElectric = /(?:\bEV\b|일렉트릭|일렉트리파이드|전동화|전기차|EVX)/i.test(`${review.model || ""} ${review.title || ""}`);
     let best = null;
 
-    for (const brand of vehicleCatalog.filter(item => item.market === DEFAULT_MARKET)) {
+    for (const brand of vehicleCatalog.filter(item => item.market === DEFAULT_MARKET && item.name === "제네시스")) {
       for (const car of brand.cars) {
         const name = car.name;
         const hybrid = /하이브리드/.test(name);
@@ -10819,7 +10819,7 @@ const vehicleCatalog = [
 
   function openReviewVehicleList(vehicle) {
     if (!vehicle || typeof vehicle !== "object") return;
-    const brand = vehicleCatalog.find(item => item.name === vehicle.brandName && item.market === DEFAULT_MARKET);
+    const brand = vehicleCatalog.find(item => item.name === EXCLUSIVE_BRAND && item.name === vehicle.brandName && item.market === DEFAULT_MARKET);
     if (!brand || !brand.cars.some(car => car.name === vehicle.carName)) return;
 
     // 후기 버튼을 누르면 목록에서 다시 클릭하지 않아도 해당 차량의
@@ -11364,12 +11364,13 @@ const vehicleCatalog = [
   ];
 
   const DEFAULT_MARKET = "domestic";
+  const EXCLUSIVE_BRAND = "제네시스"; // 제네시스 전용 사이트: 다른 브랜드는 목록·검색·후기 연결에 표시하지 않습니다.
 
   const state = {
     step: 1,
     maxReachedStep: 1,
     market: DEFAULT_MARKET,
-    brandName: "",
+    brandName: EXCLUSIVE_BRAND,
     carName: "",
     paintId: "",
     trim: "",
@@ -11666,7 +11667,8 @@ const vehicleCatalog = [
   function updateReviewPlacement() {
     if (!reviewSection || !reviewParking) return;
 
-    const shouldShowReview = state.step === 1 && !state.brandName;
+    // 브랜드는 항상 제네시스로 미리 선택되므로 차종 미선택 상태에서 후기를 표시합니다.
+    const shouldShowReview = state.step === 1 && !state.carName;
     const slot = content.querySelector("[data-review-slot]");
     reviewSection.hidden = !shouldShowReview;
 
@@ -11701,7 +11703,7 @@ const vehicleCatalog = [
   }
 
   function currentBrands() {
-    return brands.filter(brand => brand.market === DEFAULT_MARKET);
+    return brands.filter(brand => brand.market === DEFAULT_MARKET && brand.name === EXCLUSIVE_BRAND);
   }
 
   function getBrandLogoPath(brandName) {
@@ -11843,11 +11845,13 @@ const vehicleCatalog = [
   function ensureSelection() {
     state.market = DEFAULT_MARKET;
 
-    const list = currentBrands();
-
-    if (state.brandName && !list.some(brand => brand.name === state.brandName)) {
-      state.brandName = "";
+    // 초기 진입, 견적 초기화, 브라우저 히스토리 복원 모두 제네시스를 기본 선택합니다.
+    // 다른 브랜드 상태가 들어오면 기존 차량·색상 선택값도 안전하게 해제합니다.
+    if (state.brandName !== EXCLUSIVE_BRAND) {
+      state.brandName = EXCLUSIVE_BRAND;
       state.carName = "";
+      state.paintId = "";
+      resetSelectionsAfterVehicleChange();
     }
 
     const brand = currentBrand();
@@ -11919,34 +11923,11 @@ const vehicleCatalog = [
         <div class="step-heading">
           <span>STEP 01</span>
           <h2>원하는 차량을 선택해 주세요.</h2>
-          <p>브랜드와 차량, 외장 색상을 순서대로 선택할 수 있습니다.</p>
+          <p>제네시스 차량과 외장 색상을 차례대로 선택해 주세요.</p>
         </div>
 
-        <fieldset class="option-block" data-option-section="brand">
-          <legend><b>1</b> 브랜드 선택</legend>
-          <div class="wizard-brand-grid">
-            ${currentBrands().map(item => {
-              const brandLogoPath = getBrandLogoPath(item.name);
-
-              return `
-              <button class="${item.name === state.brandName ? "active" : ""}" type="button" data-brand="${item.name}">
-                ${brandLogoPath ? `
-                  <span class="brand-logo-box ${isLightBrandLogo(item.name) ? "is-light-logo" : ""}">
-                    <img src="${brandLogoPath}" alt="${item.name} 로고">
-                  </span>
-                  <span class="brand-label">${item.name}</span>
-                ` : `
-                  <small>${item.short}</small>
-                  <span class="brand-label">${item.name}</span>
-                `}
-              </button>
-            `;
-            }).join("")}
-          </div>
-        </fieldset>
-
-        <fieldset class="option-block ${!state.brandName ? "is-disabled-block sequential-hidden" : ""}" data-option-section="car">
-          <legend><b>2</b> 차량 선택</legend>
+        <fieldset class="option-block" data-option-section="car">
+          <legend><b>1</b> 제네시스 차량 선택</legend>
           ${brand ? `
             <div class="vehicle-card-list" id="carCardList">
               ${brand.cars.map(car => `
@@ -11958,7 +11939,7 @@ const vehicleCatalog = [
                 </button>
               `).join("")}
             </div>
-          ` : `<p class="empty-selection-guide">브랜드를 먼저 선택해 주세요.</p>`}
+          ` : `<p class="empty-selection-guide">차량 목록을 불러올 수 없습니다.</p>`}
         </fieldset>
 
         <div class="wizard-car-card car-adjust ${!state.carName ? "is-empty sequential-hidden" : ""} ${brand?.ownBackground ? "has-own-background" : ""} ${state.brandName === "테슬라" ? "is-tesla" : ""} ${state.brandName === "제네시스" ? "is-genesis" : ""} ${state.brandName === "기아" ? "is-kia" : ""} ${state.brandName === "기아" && state.carName === "봉고3" ? "is-kia-bongo3" : ""}" data-brand="${state.brandName || ""}" data-car="${state.carName || ""}">
@@ -11966,7 +11947,7 @@ const vehicleCatalog = [
 
           <div class="paint-block ${!state.carName ? "is-disabled-block" : "has-monthly-discount"}" data-option-section="paint">
             <div class="paint-label">
-              <span class="paint-label-title"><b>3</b> 외장 색상${state.carName ? `<em>${paints.length}개</em>` : ""}</span>
+              <span class="paint-label-title"><b>2</b> 외장 색상${state.carName ? `<em>${paints.length}개</em>` : ""}</span>
               ${state.carName ? `<small class="paint-swipe-guide">좌우로 넘겨보세요</small>` : ""}
             </div>
             ${state.carName ? `
@@ -12840,7 +12821,7 @@ const vehicleCatalog = [
   const globalVehicleSearchList = document.getElementById("globalVehicleSearchList");
 
   const allVehicleSearchItems = vehicleCatalog
-    .filter(brandItem => brandItem.market === DEFAULT_MARKET)
+    .filter(brandItem => brandItem.market === DEFAULT_MARKET && brandItem.name === EXCLUSIVE_BRAND)
     .flatMap(brandItem =>
       brandItem.cars.map(carItem => ({
         market: brandItem.market,
@@ -12957,7 +12938,7 @@ const vehicleCatalog = [
     state.step = 1;
     state.maxReachedStep = 1;
     state.market = DEFAULT_MARKET;
-    state.brandName = "";
+    state.brandName = EXCLUSIVE_BRAND;
     state.carName = "";
     state.paintId = "";
     state.trim = "";
@@ -13215,11 +13196,7 @@ const vehicleCatalog = [
 
   function validateCurrentStep() {
     if (state.step === 1) {
-      if (!state.brandName) {
-        showValidation("브랜드를 선택해 주세요.");
-        return false;
-      }
-      if (!state.carName) {
+      if (state.brandName !== EXCLUSIVE_BRAND || !state.carName) {
         showValidation("차량을 선택해 주세요.");
         return false;
       }
@@ -13381,22 +13358,9 @@ const vehicleCatalog = [
 
     // Apps Script의 e.parameter에서 각 값을 안정적으로 읽을 수 있도록
     // application/x-www-form-urlencoded 형식으로 명시적으로 구성합니다.
-    // 신청출처는 광고 유입경로와 별도로 실제 견적 사이트 도메인에서 판별합니다.
-    // 네이버카페 전용 페이지는 기존처럼 window.AUTOGENIE_SUBMISSION_SOURCE = "naver_cafe"로 지정할 수 있습니다.
-    const currentHost = location.hostname.toLowerCase();
-    const sourceByDomain = {
-      "autogenie.agautoplan.com": { code: "", label: "오토지니" },
-      "kcar.agautoplan.com": { code: "google", label: "구글" },
-      "nkcar.agautoplan.com": { code: "naver_banner", label: "네이버배너" }
-    };
-    const explicitSource = String(window.AUTOGENIE_SUBMISSION_SOURCE || "").trim();
-    const explicitMap = {
-      naver_cafe: { code: "naver_cafe", label: "네이버카페" },
-      google: { code: "google", label: "구글" },
-      naver_banner: { code: "naver_banner", label: "네이버배너" }
-    };
-    const estimateSource = sourceByDomain[currentHost] || explicitMap[explicitSource] ||
-      { code: "", label: "오토지니" };
+    // 제네시스 전용 페이지입니다. 도메인이나 유입 광고와 관계없이
+    // 국산차 공용 Apps Script에서 "제네시스"로 저장되도록 고정 전송합니다.
+    const estimateSource = { code: "genesis", label: "제네시스" };
 
     const body = new URLSearchParams({
       submittedAt: payload.submittedAt || "",

@@ -13,8 +13,8 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="원하는 차량을 선택하고 오토지니에서 장기렌트·리스 조건을 빠르게 비교해 보세요.">
-  <title>오토지니 KOREA | 국산차 장기렌트·리스 전 차종 비교</title>
+  <meta name="description" content="오토지니 제네시스 전용 장기렌트·리스 견적. G70·G80·G90·GV 시리즈 중 원하는 차량과 조건을 선택해 보세요.">
+  <title>오토지니 GENESIS | 제네시스 장기렌트·리스 견적 비교</title>
 
   <script>
     if ("scrollRestoration" in history) {
@@ -45,13 +45,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Smartlog -->
-    <!-- <script type="text/javascript">
-        var hpt_info={'_account':'UHPT-36258', '_server': 'a30'};
-    </script>
-    <script language="javascript" src="//cdn.smlog.co.kr/core/smart.js" charset="utf-8"></script>
-    <noscript><img src="//a30.smlog.co.kr/smart_bda.php?_account=36258" style="display:none;width:0;height:0;" border="0"/></noscript>  -->
 
 
   <div class="landing-loader" id="landingLoader" role="status" aria-live="polite" aria-label="견적 화면을 준비하고 있습니다.">
@@ -122,13 +115,13 @@
         </span>
       </a>
       <button type="button" class="header-caption header-vehicle-search-button" id="openVehicleSearch" aria-haspopup="dialog" aria-controls="vehicleSearchModal">
-        <span class="header-vehicle-search-button__desktop">국산차 검색</span>
+        <span class="header-vehicle-search-button__desktop">제네시스 검색</span>
         <span class="header-vehicle-search-button__mobile">차량 검색</span>
       </button>
     </header>
 
     <section class="wizard-hero">
-      <p>국산차 전 차종 비교</p>
+      <p>제네시스 장기렌트·리스 전용</p>
       <h1>내가 원하는 차량,<br><strong>조건까지 한 번에 선택하세요.</strong></h1>
       <!-- <span>전국 최저가 맞춤 견적을 받아보실 수 있습니다.</span> -->
       <span>초기비용 <span class="wizard-zero">0</span>원, 자동차세 <span class="wizard-zero">0</span>원, 보험료 <span class="wizard-zero">0</span>원</span>
@@ -170,17 +163,12 @@
             <div class="step-heading">
               <span>STEP 01</span>
               <h2>원하는 차량을 선택해 주세요.</h2>
-              <p>브랜드와 차량, 외장 색상을 순서대로 선택할 수 있습니다.</p>
+              <p>제네시스 차량과 외장 색상을 차례대로 선택해 주세요.</p>
             </div>
 
-            <fieldset class="option-block">
-              <legend><b>1</b> 브랜드 선택</legend>
-              <p class="empty-selection-guide">브랜드 목록을 불러오는 중입니다.</p>
-            </fieldset>
-
-            <fieldset class="option-block is-disabled-block initial-followup-selection" hidden>
-              <legend><b>2</b> 차량 선택</legend>
-              <p class="empty-selection-guide">브랜드를 먼저 선택해 주세요.</p>
+            <fieldset class="option-block" data-option-section="car">
+              <legend><b>1</b> 제네시스 차량 선택</legend>
+              <p class="empty-selection-guide">제네시스 차량 목록을 불러오는 중입니다.</p>
             </fieldset>
 
             <div class="wizard-car-card is-empty initial-followup-selection" hidden>
@@ -196,7 +184,7 @@
               </div>
 
               <div class="paint-block is-disabled-block">
-                <div class="paint-label"><b>3</b> 외장 색상</div>
+                <div class="paint-label"><b>2</b> 외장 색상</div>
                 <p class="empty-selection-guide">차량을 먼저 선택해 주세요.</p>
               </div>
             </div>
@@ -210,7 +198,7 @@
           <div class="review-section__head">
             <div>
               <span class="review-section__eyebrow">REAL DELIVERY REVIEW</span>
-              <h2 id="reviewSectionTitle">오토지니 실제 출고 후기</h2>
+              <h2 id="reviewSectionTitle">제네시스 실제 출고 후기</h2>
               
             </div>
             <a class="review-section__more" href="#review-detail">전체 후기 보기</a>
@@ -257,14 +245,14 @@
     <div class="vehicle-search-modal__panel">
       <div class="vehicle-search-modal__header">
         <div>
-          <h2 id="vehicleSearchModalTitle">국산차 검색</h2>
-          <p>차량명을 검색하면 브랜드와 차량이 자동으로 선택됩니다.</p>
+          <h2 id="vehicleSearchModalTitle">제네시스 차량 검색</h2>
+          <p>제네시스 차량을 검색하면 해당 차량 선택 화면으로 이동합니다.</p>
         </div>
         <button type="button" class="vehicle-search-modal__close" id="closeVehicleSearch" aria-label="차량 검색 닫기">×</button>
       </div>
       <div class="vehicle-search-modal__body">
         <div class="vehicle-search-field">
-          <input type="search" id="globalVehicleSearch" placeholder="예: 아반떼, 쏘렌토, 그랑 콜레오스" autocomplete="off" aria-controls="globalVehicleSearchList">
+          <input type="search" id="globalVehicleSearch" placeholder="예: G80, GV70, GV80" autocomplete="off" aria-controls="globalVehicleSearchList">
           <button type="button" class="vehicle-search-clear" id="globalVehicleSearchClear" aria-label="검색어 지우기" hidden>×</button>
         </div>
         <p class="vehicle-search-result" id="globalVehicleSearchResult" aria-live="polite">차량명을 입력해 주세요.</p>
@@ -399,9 +387,9 @@
 
   <script src="js/traffic-tracker.js?v=20261027"></script>
   <script src="js/trim-reference-data.js?v=20261029-kia5-upgrade-ui-02"></script>
-  <script src="js/script.js?v=20261104-deeplink-intro-fix-01"></script>
+  <script src="js/script.js?v=20261106-genesis-only-01"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="js/reviews.js?v=20261022-review-full-ad-safe-v2"></script>
+  <script src="js/reviews.js?v=20261106-genesis-only-01"></script>
 
 </body>
 </html>
