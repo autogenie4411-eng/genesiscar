@@ -3,9 +3,9 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 
 const SOURCE = 'https://www.agautoplan.com/review';
-const ROLLING_MONTHS = 12; // 제네시스 단일 브랜드: 최근 12개월 수집 및 표시
-const MAX_PAGES = 100; // 1년 이상 게시글을 탐색할 수 있도록 확대
-const MAX_REVIEWS = 800; // 수집 후기 상한, 필요 시 추가 확대 가능
+const ROLLING_MONTHS = 24; // 제네시스 단일 브랜드: 최근 24개월 수집 및 표시
+const MAX_PAGES = 160; // 2년치 게시글을 탐색할 수 있도록 확대
+const MAX_REVIEWS = 1600; // 2년치 후기 수집 상한
 const OUTPUT = path.resolve('data/reviews.json');
 
 // 후기 분류는 메이커 + 국내/수입 차종명을 함께 검사합니다.
@@ -83,7 +83,7 @@ function koreaToday() {
   return new Date(value('year'), value('month') - 1, value('day'));
 }
 
-// 제네시스는 출고 후기 수가 적으므로 최근 12개월 전체를 수집한다.
+// 제네시스는 출고 후기 수가 적으므로 최근 24개월 전체를 수집한다.
 function galleryStartDate() {
   return rollingStartDate();
 }
@@ -359,7 +359,7 @@ async function collectBoardOrder(page) {
 
     if (!items.length) break;
 
-    // 최근 12개월 시작일에 도달할 때까지 탐색한다.
+    // 최근 24개월 시작일에 도달할 때까지 탐색한다.
     const cutoff = galleryStartDate();
 
     const pageDates = items.map(item => parseDate(item.text)).filter(Boolean);
@@ -878,7 +878,7 @@ try {
   }
 
   if (!reviews.length) {
-    throw new Error('최근 12개월 출고 후기를 한 건도 수집하지 못했습니다.');
+    throw new Error('최근 24개월 출고 후기를 한 건도 수집하지 못했습니다.');
   }
 
   const unique = [];

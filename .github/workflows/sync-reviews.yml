@@ -40,7 +40,7 @@ jobs:
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
 
-      - name: Collect yearly reviews and recent carousel data
+      - name: Collect two-year reviews and recent carousel data
         run: node scripts/sync-reviews.mjs
 
       - name: Commit updated reviews

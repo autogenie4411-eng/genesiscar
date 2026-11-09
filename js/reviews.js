@@ -226,17 +226,17 @@
 
   const SWIPER_DELAY = 2200; // 한 카드가 머무는 시간(ms)
   const SWIPER_SPEED = 1000; // 옆으로 스르륵 넘어가는 시간(ms)
-  const MAX_REVIEWS = 800; // 최근 12개월 후기 전체 목록까지 보존
-  const ROLLING_MONTHS = 12; // 제네시스 단일 브랜드: 최근 12개월 후기 표시
+  const MAX_REVIEWS = 1600; // 최근 24개월 후기 전체 목록까지 보존
+  const ROLLING_MONTHS = 24; // 제네시스 단일 브랜드: 최근 24개월 후기 표시
   const MIN_LOCAL_REVIEWS = 20;
-  const SOURCE_LIST_PAGES = 30;
-  const SOURCE_MAX_DETAIL_FETCHES = 360;
+  const SOURCE_LIST_PAGES = 60;
+  const SOURCE_MAX_DETAIL_FETCHES = 720;
   const SOURCE_CACHE_KEY = 'autogenie-all-reviews-weekly-v1';
   const SOURCE_CACHE_TTL = 30 * 60 * 1000;
   const LOCAL_FRESH_DAYS = 14; // 오래된 JSON을 최신 후기처럼 먼저 노출하지 않는다.
 
-  let renderedReviews = []; // 최근 12개월 전체 후기
-  let rollingReviews = [];  // 메인 화면 최근 12개월
+  let renderedReviews = []; // 최근 24개월 전체 후기
+  let rollingReviews = [];  // 메인 화면 최근 24개월
   let reviewDialog = null;
   let reviewDialogReturnFocus = null;
   let reviewHistoryActive = false;
@@ -301,7 +301,7 @@
     return date;
   }
 
-  // 국내 게시판 날짜와 12개월 구간은 한국 날짜를 기준으로 계산한다.
+  // 국내 게시판 날짜와 24개월 구간은 한국 날짜를 기준으로 계산한다.
   function koreaYearAndMonth() {
     const values = new Intl.DateTimeFormat('en-US', {
       timeZone: 'Asia/Seoul', year: 'numeric', month: 'numeric', day: 'numeric'
@@ -311,8 +311,8 @@
   }
 
   function galleryStartDate() {
-    // 메인/전체 보기 모두 최근 12개월 후기 수집 범위를 사용한다.
-    // 전년도 하반기 후기까지 데이터에 포함되어야 1년 노출이 정상 작동한다.
+    // 메인/전체 보기 모두 최근 24개월 후기 수집 범위를 사용한다.
+    // 2년 전 후기까지 데이터에 포함되어야 2년 노출이 정상 작동한다.
     return rollingStartDate();
   }
 
@@ -457,7 +457,7 @@
     requestAnimationFrame(() => window.scrollTo(x, y));
   }
 
-  // 전체 후기 보기는 최근 12개월 자료를 모달 카드 목록으로 표시한다.
+  // 전체 후기 보기는 최근 24개월 자료를 모달 카드 목록으로 표시한다.
   function reviewGridTemplate(review) {
     const title = cleanReviewTitle(review.title);
     const date = formatReviewDate(review.date);
@@ -1057,7 +1057,7 @@
     }
 
     section.hidden = false;
-    track.innerHTML = rollingReviews.length ? carouselCardMarkup(rollingReviews) : `<article class="review-card review-card--loading"><div class="review-card__body"><strong>최근 12개월 출고 후기가 없습니다.</strong><p>전체 후기 보기를 누르면 이전 출고 후기도 확인할 수 있습니다.</p></div></article>`;
+    track.innerHTML = rollingReviews.length ? carouselCardMarkup(rollingReviews) : `<article class="review-card review-card--loading"><div class="review-card__body"><strong>최근 24개월 출고 후기가 없습니다.</strong><p>전체 후기 보기를 누르면 이전 출고 후기도 확인할 수 있습니다.</p></div></article>`;
     bindImageFallbacks();
 
     // DOM 크기가 계산된 다음 Swiper를 초기화해야 slidesPerView:auto가 정확하게 작동한다.
