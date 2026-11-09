@@ -1430,6 +1430,17 @@ body:has(.wizard-page) {
     z-index: 2;
     pointer-events: none;
 }
+.vehicle-card-item__info {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    max-width: calc(100% - 170px);
+    flex-wrap: wrap;
+}
+
 .vehicle-card-item__name {
     position: relative;
     z-index: 3;
@@ -1437,6 +1448,21 @@ body:has(.wizard-page) {
     font-size: var(--font-20);
     font-weight: 900;
     line-height: 1.3;
+}
+
+.vehicle-card-item__promo {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #fff1f1;
+    border: 1px solid #ffd2d2;
+    color: #d92d20;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(217, 45, 32, 0.08);
 }
 .vehicle-card-item__thumb {
     position: relative;
@@ -10364,4 +10390,18 @@ body.review-dialog-open {
     box-shadow: none;
     cursor: not-allowed;
     opacity: 1;
+}
+
+@media (max-width: 640px) {
+    .vehicle-card-item__info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        max-width: calc(100% - 124px);
+    }
+
+    .vehicle-card-item__promo {
+        font-size: 11px;
+        padding: 5px 9px;
+    }
 }

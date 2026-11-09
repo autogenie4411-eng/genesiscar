@@ -1,6 +1,27 @@
 (() => {
   "use strict";
 
+  /* ============================================================
+   * 차량 선택 리스트 할인배지 설정
+   * enabled: true = 표시 / false = 숨김
+   * brand, car: 사이트 차량 리스트에 등록된 이름과 동일하게 입력
+   * amount: 만원 단위 (600 = 600만원)
+   * 같은 차량에 여러 배지를 표시하려면 배열에 항목을 추가하세요.
+   * ============================================================ */
+  const VEHICLE_DISCOUNT_BADGES = [
+    { enabled: true, brand: "제네시스", car: "G80", amount: 600 },
+    // { enabled: true, brand: "제네시스", car: "GV70", amount: 300 },
+  ];
+
+  function renderVehicleDiscountBadges(brand, car) {
+    return VEHICLE_DISCOUNT_BADGES
+      .filter(item => item.enabled === true && item.brand === brand && item.car === car
+        && Number.isFinite(Number(item.amount)) && Number(item.amount) > 0)
+      .map(item => `<span class="vehicle-card-item__promo">차량가 최대 ${Number(item.amount).toLocaleString("ko-KR")}만원 할인</span>`)
+      .join("");
+  }
+
+
   const currentMonth = new Date().getMonth() + 1;
 
   // 현재 월은 화면 렌더링 시마다 계산합니다.
@@ -11932,7 +11953,10 @@ const vehicleCatalog = [
             <div class="vehicle-card-list" id="carCardList">
               ${brand.cars.map(car => `
                 <button class="vehicle-card-item ${car === state.carName ? "active" : ""}" type="button" data-car-card="${car}" data-brand="${state.brandName}" aria-pressed="${car === state.carName ? "true" : "false"}">
-                  <span class="vehicle-card-item__name">${car}</span>
+                  <span class="vehicle-card-item__info">
+                    <span class="vehicle-card-item__name">${car}</span>
+                    ${renderVehicleDiscountBadges(state.brandName, car)}
+                  </span>
                   <span class="vehicle-card-item__thumb">
                     <img src="${getCarPreviewImage(state.brandName, car)}" alt="${state.brandName} ${car}">
                   </span>
