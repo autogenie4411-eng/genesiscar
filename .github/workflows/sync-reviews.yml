@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   sync-reviews:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
       # 상대 날짜(오늘/어제/n일 전)를 한국 날짜 기준으로 해석
