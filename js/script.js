@@ -1952,6 +1952,132 @@ const vehicleCatalog = [
     "ownBackground": false,
     "cars": [
       {
+        "name": "GV90",
+        "detailModels": [
+          {
+            "name": "EV 123.5kWh",
+            "trims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          }
+        ],
+        "paints": [
+          {
+            "id": "paint-591",
+            "name": "마칼루 그레이 매트",
+            "hex": "#515355",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-마칼루 그레이 매트.webp"
+          },
+          {
+            "id": "paint-592",
+            "name": "마칼루 그레이",
+            "hex": "#343434",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-마칼루 그레이.webp"
+          },
+          {
+            "id": "paint-593",
+            "name": "마테호른 화이트",
+            "hex": "#d2d5d4",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-마테호른 화이트.webp"
+          },
+          {
+            "id": "paint-594",
+            "name": "모나쉬 실버",
+            "hex": "#a4a4a4",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-모나쉬 실버.webp"
+          },
+          {
+            "id": "paint-595",
+            "name": "바에나 그린",
+            "hex": "#31432f",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-바에나 그린.webp"
+          },
+          {
+            "id": "paint-596",
+            "name": "벨라 버건디",
+            "hex": "#5d2e34",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-벨라 버건디.webp"
+          },
+          {
+            "id": "paint-597",
+            "name": "비크 블랙",
+            "hex": "#292929",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-비크 블랙.webp"
+          },
+          {
+            "id": "paint-598",
+            "name": "세빌 실버",
+            "hex": "#70706e",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-세빌 실버.webp"
+          },
+          {
+            "id": "paint-599",
+            "name": "세이셸 베이지",
+            "hex": "#dbd6ca",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-세이셸 베이지.webp"
+          },
+          {
+            "id": "paint-600",
+            "name": "소노란 네이비",
+            "hex": "#303236",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-소노란 네이비.webp"
+          },
+          {
+            "id": "paint-601",
+            "name": "우유니 화이트",
+            "hex": "#e6e8ea",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-우유니 화이트.webp"
+          },
+          {
+            "id": "paint-602",
+            "name": "자이푸르 로즈",
+            "hex": "#66625f",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-자이푸르 로즈.webp"
+          },
+          {
+            "id": "paint-603",
+            "name": "카디프 그린",
+            "hex": "#34403c",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-카디프 그린.webp"
+          },
+          {
+            "id": "paint-604",
+            "name": "카프리 블루",
+            "hex": "#313b51",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-카프리 블루.webp"
+          },
+          {
+            "id": "paint-605",
+            "name": "코모 블루",
+            "hex": "#79809a",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-코모 블루.webp"
+          },
+          {
+            "id": "paint-606",
+            "name": "타우포 그레이",
+            "hex": "#64666a",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-타우포 그레이.webp"
+          }
+        ]
+      },
+      {
         "name": "G70",
         "detailModels": [
           {
@@ -1973,63 +2099,63 @@ const vehicleCatalog = [
             "name": "마칼루 그레이 매트",
             "hex": "#2A2F36",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-마칼루 그레이 매트.webp"
+            "image": "images/vehicles/제네시스/G70-마칼루 그레이 매트.webp"
           },
           {
             "id": "paint-317",
             "name": "마칼루 그레이",
             "hex": "#23282E",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/G70-마칼루 그레이.webp"
           },
           {
             "id": "paint-318",
             "name": "바트나 그레이",
             "hex": "#999894",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-바트나 그레이.webp"
+            "image": "images/vehicles/제네시스/G70-바트나 그레이.webp"
           },
           {
             "id": "paint-319",
             "name": "본드 실버",
             "hex": "#929191",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-본드 실버.webp"
+            "image": "images/vehicles/제네시스/G70-본드 실버.webp"
           },
           {
             "id": "paint-320",
             "name": "비크 블랙",
             "hex": "#0D0D0D",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-비크 블랙.webp"
+            "image": "images/vehicles/제네시스/G70-비크 블랙.webp"
           },
           {
             "id": "paint-321",
             "name": "세빌 실버",
             "hex": "#767676",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-세빌 실버.webp"
+            "image": "images/vehicles/제네시스/G70-세빌 실버.webp"
           },
           {
             "id": "paint-322",
             "name": "우유니 화이트",
             "hex": "#F5F5F5",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-우유니 화이트.webp"
+            "image": "images/vehicles/제네시스/G70-우유니 화이트.webp"
           },
           {
             "id": "paint-323",
             "name": "카프리 블루",
             "hex": "#102142",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-카프리 블루.webp"
+            "image": "images/vehicles/제네시스/G70-카프리 블루.webp"
           },
           {
             "id": "paint-324",
             "name": "태즈먼 블루",
             "hex": "#102D41",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g70-태즈먼 블루.webp"
+            "image": "images/vehicles/제네시스/G70-태즈먼 블루.webp"
           }
         ]
       },
@@ -2056,56 +2182,56 @@ const vehicleCatalog = [
             "name": "마칼루 그레이 매트",
             "hex": "#2A2F36",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80-마칼루 그레이 매트.webp"
+            "image": "images/vehicles/제네시스/G80-마칼루 그레이 매트.webp"
           },
           {
             "id": "paint-334",
             "name": "마칼루 그레이",
             "hex": "#23282E",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/G80-마칼루 그레이.webp"
           },
           {
             "id": "paint-335",
             "name": "바트나 그레이",
             "hex": "#999894",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80-바트나 그레이.webp"
+            "image": "images/vehicles/제네시스/G80-바트나 그레이.webp"
           },
           {
             "id": "paint-336",
             "name": "비크 블랙",
             "hex": "#0D0D0D",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80-비크 블랙.webp"
+            "image": "images/vehicles/제네시스/G80-비크 블랙.webp"
           },
           {
             "id": "paint-337",
             "name": "세레스 블루",
             "hex": "#36424F",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80-세레스 블루.webp"
+            "image": "images/vehicles/제네시스/G80-세레스 블루.webp"
           },
           {
             "id": "paint-338",
             "name": "세빌 실버",
             "hex": "#767676",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80-세빌 실버.webp"
+            "image": "images/vehicles/제네시스/G80-세빌 실버.webp"
           },
           {
             "id": "paint-339",
             "name": "우유니 화이트",
             "hex": "#F5F5F5",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80-우유니 화이트.webp"
+            "image": "images/vehicles/제네시스/G80-우유니 화이트.webp"
           },
           {
             "id": "paint-340",
             "name": "태즈먼 블루",
             "hex": "#102D41",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80-태즈먼 블루.webp"
+            "image": "images/vehicles/제네시스/G80-태즈먼 블루.webp"
           }
         ]
       },
@@ -2125,56 +2251,56 @@ const vehicleCatalog = [
             "name": "마칼루 그레이 매트",
             "hex": "#2A2F36",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80 ev-마칼루 그레이 매트.webp"
+            "image": "images/vehicles/제네시스/G80 EV-마칼루 그레이 매트.webp"
           },
           {
             "id": "paint-326",
             "name": "마칼루 그레이",
             "hex": "#23282E",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80 ev-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/G80 EV-마칼루 그레이.webp"
           },
           {
             "id": "paint-327",
             "name": "마티라 블루",
             "hex": "#10435C",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80 ev-마티라 블루.webp"
+            "image": "images/vehicles/제네시스/G80 EV-마티라 블루.webp"
           },
           {
             "id": "paint-328",
             "name": "비크 블랙",
             "hex": "#0D0D0D",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80 ev-비크 블랙.webp"
+            "image": "images/vehicles/제네시스/G80 EV-비크 블랙.webp"
           },
           {
             "id": "paint-329",
             "name": "세빌 실버",
             "hex": "#767676",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80 ev-세빌 실버.webp"
+            "image": "images/vehicles/제네시스/G80 EV-세빌 실버.webp"
           },
           {
             "id": "paint-330",
             "name": "우유니 화이트",
             "hex": "#F5F5F5",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80 ev-우유니 화이트.webp"
+            "image": "images/vehicles/제네시스/G80 EV-우유니 화이트.webp"
           },
           {
             "id": "paint-331",
             "name": "카프리 블루",
             "hex": "#102343",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80 ev-카프리 블루.webp"
+            "image": "images/vehicles/제네시스/G80 EV-카프리 블루.webp"
           },
           {
             "id": "paint-332",
             "name": "태즈먼 블루",
             "hex": "#102D41",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g80 ev-태즈먼 블루.webp"
+            "image": "images/vehicles/제네시스/G80 EV-태즈먼 블루.webp"
           }
         ]
       },
@@ -2214,56 +2340,56 @@ const vehicleCatalog = [
             "name": "마우이 블랙",
             "hex": "#172023",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g90-마우이 블랙.webp"
+            "image": "images/vehicles/제네시스/G90-마우이 블랙.webp"
           },
           {
             "id": "paint-342",
             "name": "마칼루 그레이 매트",
             "hex": "#292F36",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g90-마칼루 그레이 매트.webp"
+            "image": "images/vehicles/제네시스/G90-마칼루 그레이 매트.webp"
           },
           {
             "id": "paint-343",
             "name": "마칼루 그레이",
             "hex": "#2C3036",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g90-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/G90-마칼루 그레이.webp"
           },
           {
             "id": "paint-344",
             "name": "비크 블랙",
             "hex": "#1F1F1F",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g90-비크 블랙.webp"
+            "image": "images/vehicles/제네시스/G90-비크 블랙.webp"
           },
           {
             "id": "paint-345",
             "name": "세빌 실버",
             "hex": "#7C7C7C",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g90-세빌 실버.webp"
+            "image": "images/vehicles/제네시스/G90-세빌 실버.webp"
           },
           {
             "id": "paint-346",
             "name": "우유니 화이트",
             "hex": "#F3F3F3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g90-우유니 화이트.webp"
+            "image": "images/vehicles/제네시스/G90-우유니 화이트.webp"
           },
           {
             "id": "paint-347",
             "name": "카프리 블루",
             "hex": "#102445",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g90-카프리 블루.webp"
+            "image": "images/vehicles/제네시스/G90-카프리 블루.webp"
           },
           {
             "id": "paint-348",
             "name": "태즈먼 블루",
             "hex": "#102D41",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/g90-태즈먼 블루.webp"
+            "image": "images/vehicles/제네시스/G90-태즈먼 블루.webp"
           }
         ]
       },
@@ -2295,63 +2421,63 @@ const vehicleCatalog = [
             "name": "마칼루 그레이 매트",
             "hex": "#2c3139",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-마칼루 그레이 매트.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-마칼루 그레이 매트.webp"
           },
           {
             "id": "paint-350",
             "name": "마칼루 그레이",
             "hex": "#2d3138",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-마칼루 그레이.webp"
           },
           {
             "id": "paint-351",
             "name": "마테호른 화이트",
             "hex": "#f2f2f2",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-마테호른 화이트.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-마테호른 화이트.webp"
           },
           {
             "id": "paint-352",
             "name": "세레스 블루 매트",
             "hex": "#283442",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-세레스 블루 매트.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-세레스 블루 매트.webp"
           },
           {
             "id": "paint-353",
             "name": "세레스 블루",
             "hex": "#283442",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-세레스 블루.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-세레스 블루.webp"
           },
           {
             "id": "paint-354",
             "name": "세빌 실버",
             "hex": "#737373",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-세빌 실버.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-세빌 실버.webp"
           },
           {
             "id": "paint-355",
             "name": "우유니 화이트",
             "hex": "#f3f3f3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-우유니 화이트.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-우유니 화이트.webp"
           },
           {
             "id": "paint-356",
             "name": "트롬소 그린",
             "hex": "#144252",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-트롬소 그린.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-트롬소 그린.webp"
           },
           {
             "id": "paint-581",
             "name": "비크 블랙",
             "hex": "#17191c",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv60 ev-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/GV60 EV-마칼루 그레이.webp"
           }
         ]
       },
@@ -2377,63 +2503,63 @@ const vehicleCatalog = [
             "name": "마칼루 그레이 매트",
             "hex": "#2c3139",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-마칼루 그레이 매트.webp"
+            "image": "images/vehicles/제네시스/GV70-마칼루 그레이 매트.webp"
           },
           {
             "id": "paint-367",
             "name": "마칼루 그레이",
             "hex": "#2d3138",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/GV70-마칼루 그레이.webp"
           },
           {
             "id": "paint-368",
             "name": "마테호른 화이트",
             "hex": "#f2f2f2",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-마테호른 화이트.webp"
+            "image": "images/vehicles/제네시스/GV70-마테호른 화이트.webp"
           },
           {
             "id": "paint-369",
             "name": "베링 블루",
             "hex": "#5c656b",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-베링 블루.webp"
+            "image": "images/vehicles/제네시스/GV70-베링 블루.webp"
           },
           {
             "id": "paint-370",
             "name": "비크 블랙",
             "hex": "#17191c",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-비크 블랙.webp"
+            "image": "images/vehicles/제네시스/GV70-비크 블랙.webp"
           },
           {
             "id": "paint-371",
             "name": "세레스 블루",
             "hex": "#283442",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-세레스 블루.webp"
+            "image": "images/vehicles/제네시스/GV70-세레스 블루.webp"
           },
           {
             "id": "paint-372",
             "name": "세빌 실버",
             "hex": "#737373",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-세빌 실버.webp"
+            "image": "images/vehicles/제네시스/GV70-세빌 실버.webp"
           },
           {
             "id": "paint-373",
             "name": "우유니 화이트",
             "hex": "#f3f3f3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-우유니 화이트.webp"
+            "image": "images/vehicles/제네시스/GV70-우유니 화이트.webp"
           },
           {
             "id": "paint-374",
             "name": "트롬소 그린",
             "hex": "#144252",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70-트롬소 그린.webp"
+            "image": "images/vehicles/제네시스/GV70-트롬소 그린.webp"
           }
         ]
       },
@@ -2453,63 +2579,63 @@ const vehicleCatalog = [
             "name": "마칼루 그레이 매트",
             "hex": "#2c3139",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-마칼루 그레이 매트.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-마칼루 그레이 매트.webp"
           },
           {
             "id": "paint-358",
             "name": "마칼루 그레이",
             "hex": "#2d3138",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-마칼루 그레이.webp"
           },
           {
             "id": "paint-359",
             "name": "마테호른 화이트",
             "hex": "#f2f2f2",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-마테호른 화이트.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-마테호른 화이트.webp"
           },
           {
             "id": "paint-360",
             "name": "비크 블랙",
             "hex": "#17191c",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-비크 블랙.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-비크 블랙.webp"
           },
           {
             "id": "paint-361",
             "name": "세레스 블루 매트",
             "hex": "#283442",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-세레스 블루 매트.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-세레스 블루 매트.webp"
           },
           {
             "id": "paint-362",
             "name": "세레스 블루",
             "hex": "#283442",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-세레스 블루.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-세레스 블루.webp"
           },
           {
             "id": "paint-363",
             "name": "세빌 실버",
             "hex": "#737373",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-세빌 실버.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-세빌 실버.webp"
           },
           {
             "id": "paint-364",
             "name": "우유니 화이트",
             "hex": "#f3f3f3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-우유니 화이트.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-우유니 화이트.webp"
           },
           {
             "id": "paint-365",
             "name": "트롬소 그린",
             "hex": "#144252",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv70 ev-트롬소 그린.webp"
+            "image": "images/vehicles/제네시스/GV70 EV-트롬소 그린.webp"
           }
         ]
       },
@@ -2536,63 +2662,63 @@ const vehicleCatalog = [
             "name": "마칼루 그레이 매트",
             "hex": "#2c3139",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-마칼루 그레이 매트.webp"
+            "image": "images/vehicles/제네시스/GV80-마칼루 그레이 매트.webp"
           },
           {
             "id": "paint-376",
             "name": "마칼루 그레이",
             "hex": "#2d3138",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-마칼루 그레이.webp"
+            "image": "images/vehicles/제네시스/GV80-마칼루 그레이.webp"
           },
           {
             "id": "paint-377",
             "name": "메테호른 화이트",
             "hex": "#f2f2f2",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-메테호른 화이트.webp"
+            "image": "images/vehicles/제네시스/GV80-메테호른 화이트.webp"
           },
           {
             "id": "paint-378",
             "name": "베링 블루",
             "hex": "#5c656b",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-베링 블루.webp"
+            "image": "images/vehicles/제네시스/GV80-베링 블루.webp"
           },
           {
             "id": "paint-379",
             "name": "비크 블랙",
             "hex": "#17191c",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-비크 블랙.webp"
+            "image": "images/vehicles/제네시스/GV80-비크 블랙.webp"
           },
           {
             "id": "paint-380",
             "name": "세레스 블루 매트",
             "hex": "#283442",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-세레스 블루 매트.webp"
+            "image": "images/vehicles/제네시스/GV80-세레스 블루 매트.webp"
           },
           {
             "id": "paint-381",
             "name": "세레스 블루",
             "hex": "#283442",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-세레스 블루.webp"
+            "image": "images/vehicles/제네시스/GV80-세레스 블루.webp"
           },
           {
             "id": "paint-382",
             "name": "세빌 실버",
             "hex": "#737373",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-세빌 실버.webp"
+            "image": "images/vehicles/제네시스/GV80-세빌 실버.webp"
           },
           {
             "id": "paint-383",
             "name": "우유니 화이트",
             "hex": "#f3f3f3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/gv80-우유니 화이트.webp"
+            "image": "images/vehicles/제네시스/GV80-우유니 화이트.webp"
           }
         ]
       }
