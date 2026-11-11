@@ -232,6 +232,8 @@
   const SOURCE_LIST_PAGES = 60;
   const SOURCE_MAX_DETAIL_FETCHES = 720;
   const SOURCE_CACHE_KEY = 'autogenie-all-reviews-weekly-v1';
+  const VERIFIED_REVIEWS_CACHE_KEY = 'autogenie-genesis-verified-reviews-v2';
+  const VERIFIED_REVIEWS_CACHE_TTL = 30 * 24 * 60 * 60 * 1000;
   const SOURCE_CACHE_TTL = 30 * 60 * 1000;
   const LOCAL_FRESH_DAYS = 14; // 오래된 JSON을 최신 후기처럼 먼저 노출하지 않는다.
 
@@ -541,7 +543,7 @@
         <div class="review-gallery-head__info">
           <span class="review-detail-eyebrow">REAL DELIVERY REVIEW</span>
           <h2>제네시스 실제 출고 후기</h2>
-          <p>${(() => { const { year, month } = koreaYearAndMonth(); return month <= 3 ? `${year - 1}~${year}년 출고 후기` : `${year}년 출고 후기`; })()} · 원하는 후기를 선택해 주세요.</p>
+          <p>${(() => { const { year, month } = koreaYearAndMonth(); return `최근 ${ROLLING_MONTHS}개월 출고 후기`; })()} · 원하는 후기를 선택해 주세요.</p>
         </div>
         <button type="button" class="review-detail-close" data-review-close aria-label="후기 목록 닫기">×</button>
       </header>
@@ -1242,34 +1244,73 @@
     }
   }
 
-  async function loadReviews() {
-    let localItems = [];
+  // 마지막으로 성공적으로 표시한 제네시스 후기를 브라우저에 보존한다.
+  // 배포가 잠시 오래된 기본 JSON을 제공하거나 fetch가 실패해도 4개로 급감하지 않게 한다.
+  function readVerifiedReviewsCache() {
     try {
-      const response = await fetch(`data/reviews.json?v=${Date.now()}`, { cache: 'no-store' });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const payload = await response.json();
-      localItems = Array.isArray(payload) ? payload : payload.reviews || [];
-    } catch (error) {
-      console.warn('reviews.json을 불러오지 못했습니다.', error);
+      const saved = JSON.parse(localStorage.getItem(VERIFIED_REVIEWS_CACHE_KEY) || 'null');
+      if (!saved?.savedAt || Date.now() - saved.savedAt > VERIFIED_REVIEWS_CACHE_TTL) return [];
+      return prepareReviews(Array.isArray(saved.reviews) ? saved.reviews : []);
+    } catch { return []; }
+  }
+
+  function saveVerifiedReviewsCache(items) {
+    const reviews = prepareReviews(items);
+    if (!reviews.length) return;
+    try {
+      // 이미지/본문의 거대한 HTML 대신 목록과 상세에 사용할 원본 필드만 유지.
+      localStorage.setItem(VERIFIED_REVIEWS_CACHE_KEY, JSON.stringify({
+        savedAt: Date.now(), reviews
+      }));
+    } catch { /* 저장 공간 부족이나 사생활 보호 모드에서는 화면 갱신만 진행 */ }
+  }
+
+  async function fetchDeployedReviews() {
+    const response = await fetch(`data/reviews.json?v=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const payload = await response.json();
+    const items = Array.isArray(payload) ? payload : payload.reviews;
+    if (!Array.isArray(items)) throw new Error('후기 JSON 형식이 올바르지 않습니다.');
+    return prepareReviews(items);
+  }
+
+  async function loadReviews() {
+    const cachedReviews = readVerifiedReviewsCache();
+    if (cachedReviews.length) renderReviewList(cachedReviews);
+
+    let deployedReviews = [];
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        deployedReviews = await fetchDeployedReviews();
+        if (deployedReviews.length) break;
+        throw new Error('제네시스 후기 데이터가 비어 있습니다.');
+      } catch (error) {
+        console.warn(`reviews.json 불러오기 ${attempt}/3회 실패`, error);
+        if (attempt < 3) await new Promise(resolve => setTimeout(resolve, attempt * 500));
+      }
     }
 
-    // GitHub Actions가 갱신한 reviews.json을 최우선으로 표시한다.
-    // 다만 첫 배포/네트워크 오류/Actions 실행 전처럼 JSON을 읽지 못한 경우에도
-    // 후기 영역 자체가 사라지지 않도록 기존 확보 후기(FALLBACK)를 즉시 표시한다.
-    const localReviews = prepareReviews(localItems);
-    const reviews = localReviews.length ? localReviews : prepareReviews(FALLBACK_REVIEWS);
+    // 정상 보유 이력이 있는데 배포 데이터만 4개로 돌아갔다면 최신 기록을 유지한다.
+    // 기간은 prepareReviews()가 매번 최근 24개월 기준으로 재검증한다.
+    const looksIncomplete = cachedReviews.length >= 8 &&
+      deployedReviews.length < Math.max(5, Math.floor(cachedReviews.length * 0.6));
+    if (looksIncomplete) {
+      console.warn(`후기 급감 감지: 브라우저 보존 ${cachedReviews.length}건 / 배포 JSON ${deployedReviews.length}건. 이전 정상 데이터를 유지합니다.`);
+      renderReviewList(cachedReviews);
+      return;
+    }
 
+    const reviews = deployedReviews.length ? deployedReviews
+      : cachedReviews.length ? cachedReviews : prepareReviews(FALLBACK_REVIEWS);
     if (reviews.length) {
       renderReviewList(reviews);
+      if (deployedReviews.length) saveVerifiedReviewsCache(reviews);
     } else {
       section.hidden = hiddenAfterBrandSelection;
       destroyReviewSwiper();
       track.innerHTML = `<article class="review-card review-card--loading">
-        <div class="review-card__body">
-          <strong>출고 후기를 준비하고 있습니다.</strong>
-          <p>다음 자동 갱신에서 최신 후기가 표시됩니다.</p>
-        </div>
-      </article>`;
+        <div class="review-card__body"><strong>출고 후기를 준비하고 있습니다.</strong>
+        <p>후기 데이터를 다시 불러와 주세요.</p></div></article>`;
     }
   }
 

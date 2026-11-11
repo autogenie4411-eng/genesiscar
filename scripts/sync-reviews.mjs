@@ -899,6 +899,16 @@ try {
   // 제네시스는 국내 브랜드이므로 수입차 자료를 제외하고 저장하며, 브라우저에서 제네시스 후기만 선별합니다.
   const domesticOnly = unique.filter(review => reviewMarket(review) === 'domestic');
 
+  // 페이지 이동 실패/일부 수집 성공으로 기존 정상 제네시스 후기 기록이
+  // 급감하는 경우 저장하지 않는다. 월/목 다음 정상 실행 때 기존 데이터를 유지한다.
+  const isGenesisEntry = review => /제네시스|genesis/i.test(String(review.brand || '')) ||
+    /(?:^|[^a-z0-9])(?:g(?:70|80|90)|gv(?:60|70|80|90))(?=$|[^a-z0-9])/i.test(`${review.title || ''} ${review.model || ''}`);
+  const earlierGenesis = existingReviews.filter(isGenesisEntry).filter(r => parseDate(r.date) >= galleryStartDate());
+  const currentGenesis = domesticOnly.filter(isGenesisEntry);
+  if (earlierGenesis.length >= 8 && currentGenesis.length < Math.max(5, Math.floor(earlierGenesis.length * 0.6))) {
+    throw new Error(`제네시스 후기 급감 감지 (이전 ${earlierGenesis.length}건 → 현재 ${currentGenesis.length}건): 일부 수집 결과로 기존 리뷰를 덮어쓰지 않습니다.`);
+  }
+
   const invalidSavedTitles = domesticOnly.filter(review => isInvalidTitle(review.title));
   if (invalidSavedTitles.length) {
     throw new Error(`오류 페이지 제목이 ${invalidSavedTitles.length}건 남아 있어 reviews.json 저장을 중단합니다.`);
