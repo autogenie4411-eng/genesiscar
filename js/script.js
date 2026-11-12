@@ -11276,43 +11276,86 @@ const vehicleCatalog = [
       });
   }
 
+  // no-cors POST는 서버 저장 실패도 브라우저에서 성공처럼 보일 수 있습니다.
+  // 방문자ID+방문세션ID 조합으로 저장 여부(true/false)만 확인합니다.
+  function confirmAutojiniVisitSaved(visitorId, visitSessionId) {
+    return new Promise(resolve => {
+      const callback = `autojiniVisitCheck_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+      const script = document.createElement("script");
+      const url = new URL(GOOGLE_APPS_SCRIPT_URL);
+      url.searchParams.set("action", "visit_status");
+      url.searchParams.set("visitSessionId", visitSessionId);
+      url.searchParams.set("visitorId", visitorId);
+      url.searchParams.set("callback", callback);
+      let complete = false;
+      let timer;
+      const finish = saved => {
+        if (complete) return;
+        complete = true;
+        window.clearTimeout(timer);
+        script.remove();
+        try { delete window[callback]; } catch (_) { window[callback] = undefined; }
+        resolve(saved);
+      };
+      window[callback] = result => finish(Boolean(result && result.success && result.saved));
+      script.onerror = () => finish(false);
+      timer = window.setTimeout(() => finish(false), 5000);
+      script.src = url.toString();
+      (document.head || document.documentElement).appendChild(script);
+    });
+  }
+
   async function sendVisitLog() {
     autojiniVisitSessionId = getOrCreateAutojiniVisitSessionId();
-
     try {
-      if (sessionStorage.getItem(AUTOJINI_VISIT_LOGGED_KEY) === "true") {
-        return true;
-      }
+      if (sessionStorage.getItem(AUTOJINI_VISIT_LOGGED_KEY) === "true") return true;
     } catch (error) {
-      console.warn("방문 로그 저장 여부를 읽지 못했습니다.", error);
+      console.warn("방문 기록 상태 확인 실패", error);
     }
 
+    const visitorId = getAutojiniVisitorId();
     const referrer = document.referrer || "";
-    const ipAddress = await getPublicIpAddress();
-
-    const success = await postAutojiniVisitData({
+    const payload = {
       requestType: "page_visit",
       visitedAt: new Date().toISOString(),
       customerName: "",
-      ipAddress,
+      // IP 수집을 기다리면 방문 도중 페이지를 나갈 때 로그 자체가 누락될 수 있습니다.
+      ipAddress: "조회 실패",
       referrerDomain: getReferrerDomain(referrer),
       referrerUrl: referrer || "직접 접속",
-      visitorId: getAutojiniVisitorId(),
+      visitorId,
       visitSessionId: autojiniVisitSessionId,
+      siteDomain: location.hostname,
+      siteSource: "제네시스",
+      submissionSource: "genesis",
       deviceType: getDeviceType(),
       browserName: getBrowserName(),
       ...window.AutoGenieTraffic?.getFields()
-    });
+    };
 
-    if (success) {
-      try {
-        sessionStorage.setItem(AUTOJINI_VISIT_LOGGED_KEY, "true");
-      } catch (error) {
-        console.warn("방문 로그 저장 여부를 기록하지 못했습니다.", error);
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const accepted = await postAutojiniVisitData(payload);
+      const confirmed = accepted && await confirmAutojiniVisitSaved(visitorId, autojiniVisitSessionId);
+      if (confirmed) {
+        try { sessionStorage.setItem(AUTOJINI_VISIT_LOGGED_KEY, "true"); } catch (_) {}
+        // 저장 성공을 확인한 뒤 IP는 비동기로 보완합니다. IP 조회 실패는 방문 기록에 영향 없음.
+        getPublicIpAddress().then(ip => {
+          if (ip && ip !== "조회 실패") {
+            postAutojiniVisitData({
+              requestType: "page_visit_update",
+              visitSessionId: autojiniVisitSessionId,
+              visitorId,
+              activeSeconds: getAutojiniVisitActiveSeconds(),
+              ipAddress: ip
+            });
+          }
+        }).catch(() => {});
+        return true;
       }
+      if (attempt < 2) await new Promise(resolve => window.setTimeout(resolve, 1000 * (attempt + 1)));
     }
-
-    return success;
+    console.warn("방문로그 서버 저장 미확인: 나중에 재시도합니다.");
+    return false;
   }
 
   function resumeAutojiniVisitTime() {
@@ -11412,6 +11455,8 @@ const vehicleCatalog = [
     const visitSaved = await sendVisitLog();
 
     if (!visitSaved) {
+      // 실패하면 세션의 방문로그를 확인할 수 있을 때까지 재시도합니다.
+      window.setTimeout(initializeAutojiniVisitTracking, 15000);
       return;
     }
 
@@ -11442,11 +11487,12 @@ const vehicleCatalog = [
     { passive: true }
   );
 
-  window.addEventListener(
-    "load",
-    initializeAutojiniVisitTracking,
-    { once: true }
-  );
+  // 이미지 로딩 전에 DOM 파싱만 완료되면 방문 기록을 먼저 전송합니다.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeAutojiniVisitTracking, { once: true });
+  } else {
+    initializeAutojiniVisitTracking();
+  }
 
   const trims = ["전체 모델", "2.5 가솔린", "3.5 가솔린", "3.5 가솔린 AWD"];
   const rateOptions = ["10%", "20%", "30%", "40%"];
