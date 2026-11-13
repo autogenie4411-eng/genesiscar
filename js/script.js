@@ -12308,6 +12308,19 @@ const vehicleCatalog = [
     return ["포터2", "포터2 일렉트릭", "봉고3"].includes(state.carName);
   }
 
+  // 할부는 장기렌트/리스와 결제 조건이 다르고 연간 주행거리도 선택하지 않습니다.
+  function isInstallmentUsage() {
+    return state.usage === "할부";
+  }
+
+  function needsInitialCostRate() {
+    return state.initialCost === "선수금" || (state.initialCost === "보증금" && !isInstallmentUsage());
+  }
+
+  function showsAnnualMileage() {
+    return state.usage === "장기렌트" || state.usage === "리스";
+  }
+
   function renderStepThree() {
     return `
       <div class="wizard-step">
@@ -12320,8 +12333,8 @@ const vehicleCatalog = [
 
         <fieldset class="option-block" data-option-section="usage">
           <legend><b>1</b> 이용 방식 선택</legend>
-          <div class="segment-control ${isLeaseOnlyTruck() ? "two-column" : "three-column"} usage-row" data-group="usage">
-            ${(isLeaseOnlyTruck() ? ["리스", "상담 후 결정"] : ["장기렌트", "리스", "상담 후 결정"]).map(value => `
+          <div class="segment-control ${isLeaseOnlyTruck() ? "three-column" : "four-column"} usage-row" data-group="usage">
+            ${(isLeaseOnlyTruck() ? ["리스", "할부", "상담 후 결정"] : ["장기렌트", "리스", "할부", "상담 후 결정"]).map(value => `
               <button class="${state.usage === value ? "active" : ""}" type="button" data-value="${value}">${value}</button>
             `).join("")}
           </div>
@@ -12329,15 +12342,15 @@ const vehicleCatalog = [
 
         ${state.usage && state.usage !== "상담 후 결정" ? `
           <fieldset class="option-block" data-option-section="initialCost">
-            <legend><b>2</b> 초기비용 선택</legend>
-            <div class="segment-control two-column" data-group="initialCost">
-              ${["초기비용 0원", "선수금", "보증금", "상담 후 결정"].map(value => `
+            <legend><b>2</b> ${isInstallmentUsage() ? "결제 조건 선택" : "초기비용 선택"}</legend>
+            <div class="segment-control ${isInstallmentUsage() ? "three-column" : "two-column"}" data-group="initialCost">
+              ${(isInstallmentUsage() ? ["선수금", "일시불", "상담 후 결정"] : ["초기비용 0원", "선수금", "보증금", "상담 후 결정"]).map(value => `
                 <button class="${state.initialCost === value ? "active" : ""}" type="button" data-value="${value}">${value}</button>
               `).join("")}
             </div>
           </fieldset>
 
-          ${state.initialCost && !["초기비용 0원", "상담 후 결정"].includes(state.initialCost) ? `
+          ${needsInitialCostRate() ? `
             <fieldset class="option-block conditional-block" data-option-section="rate">
               <legend>${state.initialCost} 비율</legend>
               <div class="rate-grid" data-group="rate">
@@ -12348,14 +12361,16 @@ const vehicleCatalog = [
             </fieldset>
           ` : ""}
 
-          <fieldset class="option-block" data-option-section="mileage">
-            <legend><b>3</b> 연간 주행거리 선택</legend>
-            <div class="mileage-grid" data-group="mileage">
-              ${mileageOptions.map(value => `
-                <button class="${state.mileage === value ? "active" : ""}" type="button" data-value="${value}">${value}</button>
-              `).join("")}
-            </div>
-          </fieldset>
+          ${showsAnnualMileage() ? `
+            <fieldset class="option-block" data-option-section="mileage">
+              <legend><b>3</b> 연간 주행거리 선택</legend>
+              <div class="mileage-grid" data-group="mileage">
+                ${mileageOptions.map(value => `
+                  <button class="${state.mileage === value ? "active" : ""}" type="button" data-value="${value}">${value}</button>
+                `).join("")}
+              </div>
+            </fieldset>
+          ` : ""}
         ` : ""}
 
         <p class="validation-message" id="validationMessage"></p>
@@ -12377,8 +12392,8 @@ const vehicleCatalog = [
           <dl>
             <div><dt>차량</dt><dd>${state.brandName && state.carName ? `${state.brandName} ${state.carName}` : "상담 후 결정"} · ${currentPaint()?.name || "상담 후 결정"}</dd></div>
             <div><dt>세부모델</dt><dd>${state.trim || "상담 후 결정"}${state.subTrim ? ` · ${state.subTrim}` : ""}</dd></div>
-            <div><dt>이용조건</dt><dd>${state.usage || "상담 후 결정"} · ${state.initialCost || "상담 후 결정"}${!["초기비용 0원", "상담 후 결정"].includes(state.initialCost) && state.rate ? ` ${state.rate}` : ""}</dd></div>
-            <div><dt>주행거리</dt><dd>${state.mileage || "상담 후 결정"}</dd></div>
+            <div><dt>이용조건</dt><dd>${state.usage || "상담 후 결정"} · ${state.initialCost || "상담 후 결정"}${needsInitialCostRate() && state.rate ? ` ${state.rate}` : ""}</dd></div>
+            ${!isInstallmentUsage() ? `<div><dt>주행거리</dt><dd>${state.mileage || "상담 후 결정"}</dd></div>` : ""}
             <div class="discount-rate"><dt>${currentMonth}월 할인율</dt><dd>최대 10%</dd></div>
             <div class="delivery-event" role="group" aria-label="출고이벤트 혜택">
               <dt class="delivery-event__ticket">
@@ -12479,9 +12494,7 @@ const vehicleCatalog = [
     const usageText = state.usage || pendingText;
     const initialCostText = !state.initialCost
       ? pendingText
-      : ["초기비용 0원", pendingText].includes(state.initialCost)
-        ? state.initialCost
-        : `${state.initialCost}${state.rate ? ` ${state.rate}` : ""}`;
+      : `${state.initialCost}${needsInitialCostRate() && state.rate ? ` ${state.rate}` : ""}`;
     const mileageText = state.mileage || pendingText;
     const subsidyRegionText = isElectricVehicle()
       ? (state.subsidyRegion || pendingText)
@@ -12514,8 +12527,8 @@ const vehicleCatalog = [
               <div><dt>외장 색상</dt><dd>${colorText}</dd></div>
               <div><dt>세부 모델</dt><dd>${modelText}</dd></div>
               <div><dt>이용 방식</dt><dd>${usageText}</dd></div>
-              <div><dt>초기비용</dt><dd>${initialCostText}</dd></div>
-              <div><dt>주행거리</dt><dd>${mileageText}</dd></div>
+              <div><dt>${isInstallmentUsage() ? "결제 조건" : "초기비용"}</dt><dd>${initialCostText}</dd></div>
+              ${!isInstallmentUsage() ? `<div><dt>주행거리</dt><dd>${mileageText}</dd></div>` : ""}
               <div class="discount-rate"><dt>${currentMonth}월 할인율</dt><dd>최대 10%</dd></div>
               <div><dt>보조금 지역</dt><dd>${subsidyRegionText}</dd></div>
             </dl>
@@ -12890,21 +12903,21 @@ const vehicleCatalog = [
             resetSelectionsAfterVehicleChange();
           }
         } else {
+          const previousUsage = state.usage;
+          const previousInitialCost = state.initialCost;
           state[key] = value;
 
-          // 이용 방식에서 "상담 후 결정"을 선택하면 아래 조건은 사용하지 않습니다.
-          // 이전에 장기렌트/리스에서 선택했던 값도 함께 비워 STEP 04와 전송 데이터가 일관되게 유지됩니다.
-          if (key === "usage" && value === "상담 후 결정") {
+          // 이용 방식을 바꾸면 이전 방식의 초기비용·주행거리 선택이 남지 않도록 초기화합니다.
+          // 예: 리스(보증금/주행거리) → 할부(선수금/일시불/상담 후 결정).
+          if (key === "usage" && previousUsage !== value) {
             state.initialCost = "";
             state.rate = "";
             state.mileage = "";
           }
 
-          if (key === "initialCost" && ["초기비용 0원", "상담 후 결정"].includes(value)) {
-            state.rate = "없음";
-          }
-          if (key === "initialCost" && !["초기비용 0원", "상담 후 결정"].includes(value) && state.rate === "없음") {
-            state.rate = "10%";
+          // 일시불/상담 후 결정에는 비율이 없고, 선수금이나 보증금만 비율을 받습니다.
+          if (key === "initialCost" && previousInitialCost !== value) {
+            state.rate = "";
           }
         }
         render({ preserveScroll: key === "market" });
@@ -12919,12 +12932,13 @@ const vehicleCatalog = [
           }
         } else if (key === "initialCost") {
           scrollToNextSelection(
-            ["초기비용 0원", "상담 후 결정"].includes(value)
-              ? '[data-option-section="mileage"]'
-              : '[data-option-section="rate"]'
+            needsInitialCostRate()
+              ? '[data-option-section="rate"]'
+              : showsAnnualMileage() ? '[data-option-section="mileage"]' : "#wizardActions",
+            needsInitialCostRate() || showsAnnualMileage() ? undefined : "end"
           );
         } else if (key === "rate") {
-          scrollToNextSelection('[data-option-section="mileage"]');
+          scrollToNextSelection(showsAnnualMileage() ? '[data-option-section="mileage"]' : "#wizardActions", showsAnnualMileage() ? undefined : "end");
         }
       });
     });
@@ -13507,11 +13521,11 @@ const vehicleCatalog = [
         showValidation("초기비용 조건을 선택해 주세요.");
         return false;
       }
-      if (!["초기비용 0원", "상담 후 결정"].includes(state.initialCost) && !state.rate) {
+      if (needsInitialCostRate() && !state.rate) {
         showValidation(`${state.initialCost} 비율을 선택해 주세요.`);
         return false;
       }
-      if (!state.mileage) {
+      if (showsAnnualMileage() && !state.mileage) {
         showValidation("연간 주행거리를 선택해 주세요.");
         return false;
       }
@@ -13604,10 +13618,9 @@ const vehicleCatalog = [
       trim: getTrimTextForMail(state.subTrim || pendingText),
       usageType: state.usage || pendingText,
       initialCostType: state.initialCost || pendingText,
-      initialCostRate: !state.initialCost || ["초기비용 0원", pendingText].includes(state.initialCost)
-        ? "해당 없음"
-        : (state.rate || pendingText),
-      annualMileage: state.mileage || pendingText,
+      initialCostRate: needsInitialCostRate() ? (state.rate || pendingText) : "해당 없음",
+      // 기존 Apps Script 필드명은 유지하고, 할부의 주행거리만 '해당 없음'으로 전송합니다.
+      annualMileage: isInstallmentUsage() ? "해당 없음" : (state.mileage || pendingText),
 
       // Apps Script의 data.subsidyRegion과 동일한 필드명으로 전송합니다.
       subsidyRegion: isElectricVehicle()

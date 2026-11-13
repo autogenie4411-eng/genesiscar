@@ -1206,6 +1206,10 @@ body:has(.wizard-page) {
 .three-column {
     grid-template-columns: repeat(3, 1fr);
 }
+/* 이용 방식 4종: 데스크톱은 한 줄, 모바일은 2행 2열 */
+.segment-control.four-column {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
 .usage-row button {
     white-space: nowrap;
     font-size: 0.875rem;
@@ -7311,6 +7315,9 @@ body.loader-active {
 }
 
 @media (max-width: 767px) {
+    .segment-control.four-column {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     .usage-row {
         gap: 6px;
     }
