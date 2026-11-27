@@ -1966,12 +1966,26 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-591",
-            "name": "마칼루 그레이 매트",
-            "hex": "#515355",
+            "id": "paint-601",
+            "name": "우유니 화이트",
+            "hex": "#e6e8ea",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-마칼루 그레이 매트.webp",
-            "surcharge": 1000000,
+            "image": "images/vehicles/제네시스/GV90-우유니 화이트.webp",
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-598",
+            "name": "세빌 실버",
+            "hex": "#70706e",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-세빌 실버.webp",
             "allowedConfigurations": [
               "EV 123.5kWh|기본모델(7인승)",
               "EV 123.5kWh|기본모델(6인승)"
@@ -1987,6 +2001,163 @@ const vehicleCatalog = [
             "hex": "#343434",
             "border": "#cfd5dc",
             "image": "images/vehicles/제네시스/GV90-마칼루 그레이.webp",
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-597",
+            "name": "비크 블랙",
+            "hex": "#292929",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-비크 블랙.webp",
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-604",
+            "name": "카프리 블루",
+            "hex": "#313b51",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-카프리 블루.webp",
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-603",
+            "name": "카디프 그린",
+            "hex": "#34403c",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-카디프 그린.webp",
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-606",
+            "name": "타우포 그레이",
+            "hex": "#64666a",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-타우포 그레이.webp",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-595",
+            "name": "바에나 그린",
+            "hex": "#31432f",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-바에나 그린.webp",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-599",
+            "name": "세이셸 베이지",
+            "hex": "#dbd6ca",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-세이셸 베이지.webp",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-602",
+            "name": "자이푸르 로즈",
+            "hex": "#66625f",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-자이푸르 로즈.webp",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-600",
+            "name": "소노란 네이비",
+            "hex": "#303236",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-소노란 네이비.webp",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-596",
+            "name": "벨라 버건디",
+            "hex": "#5d2e34",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-벨라 버건디.webp",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "EV 123.5kWh|기본모델(7인승)",
+              "EV 123.5kWh|기본모델(6인승)"
+            ],
+            "allowedTrims": [
+              "기본모델(7인승)",
+              "기본모델(6인승)"
+            ]
+          },
+          {
+            "id": "paint-605",
+            "name": "코모 블루",
+            "hex": "#79809a",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV90-코모 블루.webp",
+            "surcharge": 1000000,
             "allowedConfigurations": [
               "EV 123.5kWh|기본모델(7인승)",
               "EV 123.5kWh|기본모델(6인승)"
@@ -2029,182 +2200,11 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-595",
-            "name": "바에나 그린",
-            "hex": "#31432f",
+            "id": "paint-591",
+            "name": "마칼루 그레이 매트",
+            "hex": "#515355",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-바에나 그린.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-596",
-            "name": "벨라 버건디",
-            "hex": "#5d2e34",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-벨라 버건디.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-597",
-            "name": "비크 블랙",
-            "hex": "#292929",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-비크 블랙.webp",
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-598",
-            "name": "세빌 실버",
-            "hex": "#70706e",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-세빌 실버.webp",
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-599",
-            "name": "세이셸 베이지",
-            "hex": "#dbd6ca",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-세이셸 베이지.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-600",
-            "name": "소노란 네이비",
-            "hex": "#303236",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-소노란 네이비.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-601",
-            "name": "우유니 화이트",
-            "hex": "#e6e8ea",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-우유니 화이트.webp",
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-602",
-            "name": "자이푸르 로즈",
-            "hex": "#66625f",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-자이푸르 로즈.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-603",
-            "name": "카디프 그린",
-            "hex": "#34403c",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-카디프 그린.webp",
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-604",
-            "name": "카프리 블루",
-            "hex": "#313b51",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-카프리 블루.webp",
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-605",
-            "name": "코모 블루",
-            "hex": "#79809a",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-코모 블루.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "EV 123.5kWh|기본모델(7인승)",
-              "EV 123.5kWh|기본모델(6인승)"
-            ],
-            "allowedTrims": [
-              "기본모델(7인승)",
-              "기본모델(6인승)"
-            ]
-          },
-          {
-            "id": "paint-606",
-            "name": "타우포 그레이",
-            "hex": "#64666a",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV90-타우포 그레이.webp",
+            "image": "images/vehicles/제네시스/GV90-마칼루 그레이 매트.webp",
             "surcharge": 1000000,
             "allowedConfigurations": [
               "EV 123.5kWh|기본모델(7인승)",
@@ -2235,65 +2235,11 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-316",
-            "name": "마칼루 그레이 매트",
-            "hex": "#2A2F36",
+            "id": "paint-322",
+            "name": "우유니 화이트",
+            "hex": "#F5F5F5",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G70-마칼루 그레이 매트.webp",
-            "surcharge": 690000,
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-317",
-            "name": "마칼루 그레이",
-            "hex": "#23282E",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G70-마칼루 그레이.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-318",
-            "name": "바트나 그레이",
-            "hex": "#999894",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G70-바트나 그레이.webp",
-            "allowedConfigurations": [],
-            "allowedTrims": [],
-            "availabilityStatus": "confirmation-required"
-          },
-          {
-            "id": "paint-319",
-            "name": "본드 실버",
-            "hex": "#929191",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G70-본드 실버.webp",
-            "surcharge": 690000,
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-320",
-            "name": "비크 블랙",
-            "hex": "#0D0D0D",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G70-비크 블랙.webp",
+            "image": "images/vehicles/제네시스/G70-우유니 화이트.webp",
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -2317,11 +2263,39 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-322",
-            "name": "우유니 화이트",
-            "hex": "#F5F5F5",
+            "id": "paint-320",
+            "name": "비크 블랙",
+            "hex": "#0D0D0D",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G70-우유니 화이트.webp",
+            "image": "images/vehicles/제네시스/G70-비크 블랙.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-324",
+            "name": "태즈먼 블루",
+            "hex": "#102D41",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G70-태즈먼 블루.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-317",
+            "name": "마칼루 그레이",
+            "hex": "#23282E",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G70-마칼루 그레이.webp",
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -2345,11 +2319,27 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-324",
-            "name": "태즈먼 블루",
-            "hex": "#102D41",
+            "id": "paint-319",
+            "name": "본드 실버",
+            "hex": "#929191",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G70-태즈먼 블루.webp",
+            "image": "images/vehicles/제네시스/G70-본드 실버.webp",
+            "surcharge": 690000,
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-316",
+            "name": "마칼루 그레이 매트",
+            "hex": "#2A2F36",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G70-마칼루 그레이 매트.webp",
+            "surcharge": 690000,
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -2379,66 +2369,11 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-333",
-            "name": "마칼루 그레이 매트",
-            "hex": "#2A2F36",
+            "id": "paint-339",
+            "name": "우유니 화이트",
+            "hex": "#F5F5F5",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80-마칼루 그레이 매트.webp",
-            "surcharge": 700000,
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-334",
-            "name": "마칼루 그레이",
-            "hex": "#23282E",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80-마칼루 그레이.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-335",
-            "name": "바트나 그레이",
-            "hex": "#999894",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80-바트나 그레이.webp",
-            "allowedConfigurations": [],
-            "allowedTrims": [],
-            "availabilityStatus": "confirmation-required"
-          },
-          {
-            "id": "paint-336",
-            "name": "비크 블랙",
-            "hex": "#0D0D0D",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80-비크 블랙.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델",
-              "2.5 가솔린 터보 AWD|Black"
-            ],
-            "allowedTrims": [
-              "기본모델",
-              "Black"
-            ]
-          },
-          {
-            "id": "paint-337",
-            "name": "세레스 블루",
-            "hex": "#36424F",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80-세레스 블루.webp",
+            "image": "images/vehicles/제네시스/G80-우유니 화이트.webp",
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -2462,11 +2397,11 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-339",
-            "name": "우유니 화이트",
-            "hex": "#F5F5F5",
+            "id": "paint-334",
+            "name": "마칼루 그레이",
+            "hex": "#23282E",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80-우유니 화이트.webp",
+            "image": "images/vehicles/제네시스/G80-마칼루 그레이.webp",
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -2476,11 +2411,56 @@ const vehicleCatalog = [
             ]
           },
           {
+            "id": "paint-336",
+            "name": "비크 블랙",
+            "hex": "#0D0D0D",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G80-비크 블랙.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델",
+              "2.5 가솔린 터보 AWD|Black"
+            ],
+            "allowedTrims": [
+              "기본모델",
+              "Black"
+            ]
+          },
+          {
             "id": "paint-340",
             "name": "태즈먼 블루",
             "hex": "#102D41",
             "border": "#cfd5dc",
             "image": "images/vehicles/제네시스/G80-태즈먼 블루.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-337",
+            "name": "세레스 블루",
+            "hex": "#36424F",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G80-세레스 블루.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-333",
+            "name": "마칼루 그레이 매트",
+            "hex": "#2A2F36",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G80-마칼루 그레이 매트.webp",
+            "surcharge": 700000,
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -2503,52 +2483,11 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-325",
-            "name": "마칼루 그레이 매트",
-            "hex": "#2A2F36",
+            "id": "paint-330",
+            "name": "우유니 화이트",
+            "hex": "#F5F5F5",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80 EV-마칼루 그레이 매트.webp",
-            "surcharge": 700000,
-            "allowedConfigurations": [
-              "EV 94.5kWh|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-326",
-            "name": "마칼루 그레이",
-            "hex": "#23282E",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80 EV-마칼루 그레이.webp",
-            "allowedConfigurations": [
-              "EV 94.5kWh|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-327",
-            "name": "마티라 블루",
-            "hex": "#10435C",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80 EV-마티라 블루.webp",
-            "surcharge": 700000,
-            "allowedConfigurations": [
-              "EV 94.5kWh|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-328",
-            "name": "비크 블랙",
-            "hex": "#0D0D0D",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80 EV-비크 블랙.webp",
+            "image": "images/vehicles/제네시스/G80 EV-우유니 화이트.webp",
             "allowedConfigurations": [
               "EV 94.5kWh|기본모델"
             ],
@@ -2570,11 +2509,37 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-330",
-            "name": "우유니 화이트",
-            "hex": "#F5F5F5",
+            "id": "paint-326",
+            "name": "마칼루 그레이",
+            "hex": "#23282E",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80 EV-우유니 화이트.webp",
+            "image": "images/vehicles/제네시스/G80 EV-마칼루 그레이.webp",
+            "allowedConfigurations": [
+              "EV 94.5kWh|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-328",
+            "name": "비크 블랙",
+            "hex": "#0D0D0D",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G80 EV-비크 블랙.webp",
+            "allowedConfigurations": [
+              "EV 94.5kWh|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-332",
+            "name": "태즈먼 블루",
+            "hex": "#102D41",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G80 EV-태즈먼 블루.webp",
             "allowedConfigurations": [
               "EV 94.5kWh|기본모델"
             ],
@@ -2596,11 +2561,26 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-332",
-            "name": "태즈먼 블루",
-            "hex": "#102D41",
+            "id": "paint-325",
+            "name": "마칼루 그레이 매트",
+            "hex": "#2A2F36",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G80 EV-태즈먼 블루.webp",
+            "image": "images/vehicles/제네시스/G80 EV-마칼루 그레이 매트.webp",
+            "surcharge": 700000,
+            "allowedConfigurations": [
+              "EV 94.5kWh|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-327",
+            "name": "마티라 블루",
+            "hex": "#10435C",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G80 EV-마티라 블루.webp",
+            "surcharge": 700000,
             "allowedConfigurations": [
               "EV 94.5kWh|기본모델"
             ],
@@ -2642,11 +2622,11 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-341",
-            "name": "마우이 블랙",
-            "hex": "#172023",
+            "id": "paint-346",
+            "name": "우유니 화이트",
+            "hex": "#F3F3F3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G90-마우이 블랙.webp",
+            "image": "images/vehicles/제네시스/G90-우유니 화이트.webp",
             "allowedConfigurations": [
               "3.5 가솔린 터보|기본모델",
               "3.5 가솔린 터보 AWD|기본모델",
@@ -2658,12 +2638,11 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-342",
-            "name": "마칼루 그레이 매트",
-            "hex": "#292F36",
+            "id": "paint-345",
+            "name": "세빌 실버",
+            "hex": "#7C7C7C",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G90-마칼루 그레이 매트.webp",
-            "surcharge": 800000,
+            "image": "images/vehicles/제네시스/G90-세빌 실버.webp",
             "allowedConfigurations": [
               "3.5 가솔린 터보|기본모델",
               "3.5 가솔린 터보 AWD|기본모델",
@@ -2710,27 +2689,11 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-345",
-            "name": "세빌 실버",
-            "hex": "#7C7C7C",
+            "id": "paint-341",
+            "name": "마우이 블랙",
+            "hex": "#172023",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G90-세빌 실버.webp",
-            "allowedConfigurations": [
-              "3.5 가솔린 터보|기본모델",
-              "3.5 가솔린 터보 AWD|기본모델",
-              "3.5 가솔린 터보 MHEV|기본모델",
-              "3.5 가솔린 터보 MHEV AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-346",
-            "name": "우유니 화이트",
-            "hex": "#F3F3F3",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/G90-우유니 화이트.webp",
+            "image": "images/vehicles/제네시스/G90-마우이 블랙.webp",
             "allowedConfigurations": [
               "3.5 가솔린 터보|기본모델",
               "3.5 가솔린 터보 AWD|기본모델",
@@ -2772,6 +2735,23 @@ const vehicleCatalog = [
             "allowedTrims": [
               "기본모델"
             ]
+          },
+          {
+            "id": "paint-342",
+            "name": "마칼루 그레이 매트",
+            "hex": "#292F36",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/G90-마칼루 그레이 매트.webp",
+            "surcharge": 800000,
+            "allowedConfigurations": [
+              "3.5 가솔린 터보|기본모델",
+              "3.5 가솔린 터보 AWD|기본모델",
+              "3.5 가솔린 터보 MHEV|기본모델",
+              "3.5 가솔린 터보 MHEV AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
           }
         ]
       },
@@ -2799,12 +2779,26 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-349",
-            "name": "마칼루 그레이 매트",
-            "hex": "#2c3139",
+            "id": "paint-355",
+            "name": "우유니 화이트",
+            "hex": "#f3f3f3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV60 EV-마칼루 그레이 매트.webp",
-            "surcharge": 700000,
+            "image": "images/vehicles/제네시스/GV60 EV-우유니 화이트.webp",
+            "allowedConfigurations": [
+              "스탠다드|기본모델",
+              "스탠다드 AWD|기본모델",
+              "퍼포먼스 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-354",
+            "name": "세빌 실버",
+            "hex": "#737373",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV60 EV-세빌 실버.webp",
             "allowedConfigurations": [
               "스탠다드|기본모델",
               "스탠다드 AWD|기본모델",
@@ -2820,6 +2814,51 @@ const vehicleCatalog = [
             "hex": "#2d3138",
             "border": "#cfd5dc",
             "image": "images/vehicles/제네시스/GV60 EV-마칼루 그레이.webp",
+            "allowedConfigurations": [
+              "스탠다드|기본모델",
+              "스탠다드 AWD|기본모델",
+              "퍼포먼스 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-581",
+            "name": "비크 블랙",
+            "hex": "#17191c",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV60 EV-마칼루 그레이.webp",
+            "allowedConfigurations": [
+              "스탠다드|기본모델",
+              "스탠다드 AWD|기본모델",
+              "퍼포먼스 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-353",
+            "name": "세레스 블루",
+            "hex": "#283442",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV60 EV-세레스 블루.webp",
+            "allowedConfigurations": [
+              "스탠다드|기본모델",
+              "스탠다드 AWD|기본모델",
+              "퍼포먼스 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-356",
+            "name": "트롬소 그린",
+            "hex": "#144252",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV60 EV-트롬소 그린.webp",
             "allowedConfigurations": [
               "스탠다드|기본모델",
               "스탠다드 AWD|기본모델",
@@ -2846,11 +2885,11 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-352",
-            "name": "세레스 블루 매트",
-            "hex": "#283442",
+            "id": "paint-349",
+            "name": "마칼루 그레이 매트",
+            "hex": "#2c3139",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV60 EV-세레스 블루 매트.webp",
+            "image": "images/vehicles/제네시스/GV60 EV-마칼루 그레이 매트.webp",
             "surcharge": 700000,
             "allowedConfigurations": [
               "스탠다드|기본모델",
@@ -2862,71 +2901,12 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-353",
-            "name": "세레스 블루",
+            "id": "paint-352",
+            "name": "세레스 블루 매트",
             "hex": "#283442",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV60 EV-세레스 블루.webp",
-            "allowedConfigurations": [
-              "스탠다드|기본모델",
-              "스탠다드 AWD|기본모델",
-              "퍼포먼스 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-354",
-            "name": "세빌 실버",
-            "hex": "#737373",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV60 EV-세빌 실버.webp",
-            "allowedConfigurations": [
-              "스탠다드|기본모델",
-              "스탠다드 AWD|기본모델",
-              "퍼포먼스 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-355",
-            "name": "우유니 화이트",
-            "hex": "#f3f3f3",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV60 EV-우유니 화이트.webp",
-            "allowedConfigurations": [
-              "스탠다드|기본모델",
-              "스탠다드 AWD|기본모델",
-              "퍼포먼스 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-356",
-            "name": "트롬소 그린",
-            "hex": "#144252",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV60 EV-트롬소 그린.webp",
-            "allowedConfigurations": [
-              "스탠다드|기본모델",
-              "스탠다드 AWD|기본모델",
-              "퍼포먼스 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-581",
-            "name": "비크 블랙",
-            "hex": "#17191c",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV60 EV-마칼루 그레이.webp",
+            "image": "images/vehicles/제네시스/GV60 EV-세레스 블루 매트.webp",
+            "surcharge": 700000,
             "allowedConfigurations": [
               "스탠다드|기본모델",
               "스탠다드 AWD|기본모델",
@@ -2956,12 +2936,25 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-366",
-            "name": "마칼루 그레이 매트",
-            "hex": "#2c3139",
+            "id": "paint-373",
+            "name": "우유니 화이트",
+            "hex": "#f3f3f3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70-마칼루 그레이 매트.webp",
-            "surcharge": 700000,
+            "image": "images/vehicles/제네시스/GV70-우유니 화이트.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-372",
+            "name": "세빌 실버",
+            "hex": "#737373",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70-세빌 실버.webp",
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -2976,6 +2969,62 @@ const vehicleCatalog = [
             "hex": "#2d3138",
             "border": "#cfd5dc",
             "image": "images/vehicles/제네시스/GV70-마칼루 그레이.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-370",
+            "name": "비크 블랙",
+            "hex": "#17191c",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70-비크 블랙.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-374",
+            "name": "트롬소 그린",
+            "hex": "#144252",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70-트롬소 그린.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-371",
+            "name": "세레스 블루",
+            "hex": "#283442",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70-세레스 블루.webp",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-369",
+            "name": "베링 블루",
+            "hex": "#5c656b",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70-베링 블루.webp",
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -3000,81 +3049,12 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-369",
-            "name": "베링 블루",
-            "hex": "#5c656b",
+            "id": "paint-366",
+            "name": "마칼루 그레이 매트",
+            "hex": "#2c3139",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70-베링 블루.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-370",
-            "name": "비크 블랙",
-            "hex": "#17191c",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70-비크 블랙.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-371",
-            "name": "세레스 블루",
-            "hex": "#283442",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70-세레스 블루.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-372",
-            "name": "세빌 실버",
-            "hex": "#737373",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70-세빌 실버.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-373",
-            "name": "우유니 화이트",
-            "hex": "#f3f3f3",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70-우유니 화이트.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-374",
-            "name": "트롬소 그린",
-            "hex": "#144252",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70-트롬소 그린.webp",
+            "image": "images/vehicles/제네시스/GV70-마칼루 그레이 매트.webp",
+            "surcharge": 700000,
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -3097,12 +3077,24 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-357",
-            "name": "마칼루 그레이 매트",
-            "hex": "#2c3139",
+            "id": "paint-364",
+            "name": "우유니 화이트",
+            "hex": "#f3f3f3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70 EV-마칼루 그레이 매트.webp",
-            "surcharge": 700000,
+            "image": "images/vehicles/제네시스/GV70 EV-우유니 화이트.webp",
+            "allowedConfigurations": [
+              "EV 84kWh|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-363",
+            "name": "세빌 실버",
+            "hex": "#737373",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70 EV-세빌 실버.webp",
             "allowedConfigurations": [
               "EV 84kWh|기본모델"
             ],
@@ -3116,6 +3108,45 @@ const vehicleCatalog = [
             "hex": "#2d3138",
             "border": "#cfd5dc",
             "image": "images/vehicles/제네시스/GV70 EV-마칼루 그레이.webp",
+            "allowedConfigurations": [
+              "EV 84kWh|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-360",
+            "name": "비크 블랙",
+            "hex": "#17191c",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70 EV-비크 블랙.webp",
+            "allowedConfigurations": [
+              "EV 84kWh|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-362",
+            "name": "세레스 블루",
+            "hex": "#283442",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70 EV-세레스 블루.webp",
+            "allowedConfigurations": [
+              "EV 84kWh|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-365",
+            "name": "트롬소 그린",
+            "hex": "#144252",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV70 EV-트롬소 그린.webp",
             "allowedConfigurations": [
               "EV 84kWh|기본모델"
             ],
@@ -3138,11 +3169,12 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-360",
-            "name": "비크 블랙",
-            "hex": "#17191c",
+            "id": "paint-357",
+            "name": "마칼루 그레이 매트",
+            "hex": "#2c3139",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70 EV-비크 블랙.webp",
+            "image": "images/vehicles/제네시스/GV70 EV-마칼루 그레이 매트.webp",
+            "surcharge": 700000,
             "allowedConfigurations": [
               "EV 84kWh|기본모델"
             ],
@@ -3157,58 +3189,6 @@ const vehicleCatalog = [
             "border": "#cfd5dc",
             "image": "images/vehicles/제네시스/GV70 EV-세레스 블루 매트.webp",
             "surcharge": 700000,
-            "allowedConfigurations": [
-              "EV 84kWh|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-362",
-            "name": "세레스 블루",
-            "hex": "#283442",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70 EV-세레스 블루.webp",
-            "allowedConfigurations": [
-              "EV 84kWh|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-363",
-            "name": "세빌 실버",
-            "hex": "#737373",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70 EV-세빌 실버.webp",
-            "allowedConfigurations": [
-              "EV 84kWh|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-364",
-            "name": "우유니 화이트",
-            "hex": "#f3f3f3",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70 EV-우유니 화이트.webp",
-            "allowedConfigurations": [
-              "EV 84kWh|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-365",
-            "name": "트롬소 그린",
-            "hex": "#144252",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV70 EV-트롬소 그린.webp",
             "allowedConfigurations": [
               "EV 84kWh|기본모델"
             ],
@@ -3237,100 +3217,11 @@ const vehicleCatalog = [
         ],
         "paints": [
           {
-            "id": "paint-375",
-            "name": "마칼루 그레이 매트",
-            "hex": "#2c3139",
+            "id": "paint-383",
+            "name": "우유니 화이트",
+            "hex": "#f3f3f3",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-마칼루 그레이 매트.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-376",
-            "name": "마칼루 그레이",
-            "hex": "#2d3138",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-마칼루 그레이.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-377",
-            "name": "메테호른 화이트",
-            "hex": "#f2f2f2",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-메테호른 화이트.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-378",
-            "name": "베링 블루",
-            "hex": "#5c656b",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-베링 블루.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-379",
-            "name": "비크 블랙",
-            "hex": "#17191c",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-비크 블랙.webp",
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델",
-              "2.5 가솔린 터보 AWD|Black"
-            ],
-            "allowedTrims": [
-              "기본모델",
-              "Black"
-            ]
-          },
-          {
-            "id": "paint-380",
-            "name": "세레스 블루 매트",
-            "hex": "#283442",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-세레스 블루 매트.webp",
-            "surcharge": 1000000,
-            "allowedConfigurations": [
-              "2.5 가솔린 터보|기본모델",
-              "2.5 가솔린 터보 AWD|기본모델"
-            ],
-            "allowedTrims": [
-              "기본모델"
-            ]
-          },
-          {
-            "id": "paint-381",
-            "name": "세레스 블루",
-            "hex": "#283442",
-            "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-세레스 블루.webp",
+            "image": "images/vehicles/제네시스/GV80-우유니 화이트.webp?v=20261126-gv80-01",
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -3344,7 +3235,7 @@ const vehicleCatalog = [
             "name": "세빌 실버",
             "hex": "#737373",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-세빌 실버.webp",
+            "image": "images/vehicles/제네시스/GV80-세빌 실버.webp?v=20261126-gv80-01",
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -3354,11 +3245,157 @@ const vehicleCatalog = [
             ]
           },
           {
-            "id": "paint-383",
-            "name": "우유니 화이트",
-            "hex": "#f3f3f3",
+            "id": "paint-376",
+            "name": "마칼루 그레이",
+            "hex": "#2d3138",
             "border": "#cfd5dc",
-            "image": "images/vehicles/제네시스/GV80-우유니 화이트.webp",
+            "image": "images/vehicles/제네시스/GV80-마칼루 그레이.webp?v=20261126-gv80-01",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-379",
+            "name": "비크 블랙",
+            "hex": "#17191c",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-비크 블랙.webp?v=20261126-gv80-01",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델",
+              "2.5 가솔린 터보 AWD|Black"
+            ],
+            "allowedTrims": [
+              "기본모델",
+              "Black"
+            ]
+          },
+          {
+            "id": "paint-381",
+            "name": "세레스 블루",
+            "hex": "#283442",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-세레스 블루.webp?v=20261126-gv80-01",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-622",
+            "name": "트롬소 그린",
+            "hex": "#40524c",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-트롬소 그린.webp?v=20261126-gv80-01",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-378",
+            "name": "베링 블루",
+            "hex": "#5c656b",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-베링 블루.webp?v=20261126-gv80-01",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-623",
+            "name": "카디프 그린",
+            "hex": "#414c45",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-카디프 그린.webp?v=20261126-gv80-01",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-624",
+            "name": "세이셸 베이지",
+            "hex": "#bdb4a1",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-세이셸 베이지.webp?v=20261126-gv80-01",
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-377",
+            "name": "마테호른 화이트",
+            "hex": "#f2f2f2",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-마테호른 화이트.webp?v=20261126-gv80-01",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-375",
+            "name": "마칼루 그레이 매트",
+            "hex": "#2c3139",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-마칼루 그레이 매트.webp?v=20261126-gv80-01",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-380",
+            "name": "세레스 블루 매트",
+            "hex": "#283442",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-세레스 블루 매트.webp?v=20261126-gv80-01",
+            "surcharge": 1000000,
+            "allowedConfigurations": [
+              "2.5 가솔린 터보|기본모델",
+              "2.5 가솔린 터보 AWD|기본모델"
+            ],
+            "allowedTrims": [
+              "기본모델"
+            ]
+          },
+          {
+            "id": "paint-625",
+            "name": "브런즈윅 그린",
+            "hex": "#35463e",
+            "border": "#cfd5dc",
+            "image": "images/vehicles/제네시스/GV80-브런즈윅 그린.webp?v=20261126-gv80-02",
+            "surcharge": 1000000,
             "allowedConfigurations": [
               "2.5 가솔린 터보|기본모델",
               "2.5 가솔린 터보 AWD|기본모델"
@@ -11467,6 +11504,11 @@ const vehicleCatalog = [
     ]
   }
 ];
+  // 기준 원본에서 숨긴 차량은 선택·검색 대상에서 제외합니다.
+  vehicleCatalog.forEach(brand => {
+    if (brand.market === "domestic") brand.cars = brand.cars.filter(car => car.hidden !== true);
+  });
+
   const brands = vehicleCatalog.map(brand => ({
     ...brand,
     cars: brand.cars.map(car => car.name)
@@ -12544,7 +12586,7 @@ const vehicleCatalog = [
     if (!selected || state.step !== 2 || !state.trim) return;
     // 선택한 트림이 현재 차량/세부모델에 실제 존재하는지 다시 확인합니다.
     const group = currentVehicle()?.detailModels?.find(item => item.name === state.trim);
-    if (!group?.trims.includes(selected)) return;
+    if (!group?.trims.includes(selected) || !isTrimAvailableForPaint(selected, currentPaint(), group.name)) return;
 
     // 중요: 팝업을 닫기 전에 STEP 02의 실제 선택값을 먼저 확정합니다.
     // 이후 렌더·뒤로가기 이벤트에서 선택 전 상태로 복원되지 않도록 합니다.
@@ -12762,6 +12804,14 @@ const vehicleCatalog = [
     return all;
   }
 
+  function isDomesticVehicleSelection() {
+    return Boolean(currentVehicle() && vehicleCatalog.some(brand => brand.name === state.brandName && brand.market === "domestic"));
+  }
+
+  function shouldShowPaintTrimGuide() {
+    return isDomesticVehicleSelection() || hasPaintTrimRestrictions();
+  }
+
   function hasPaintTrimRestrictions() {
     const paints = currentPaints();
     if (!paints.length) return false;
@@ -12771,7 +12821,7 @@ const vehicleCatalog = [
   }
 
   function paintTrimGuideHtml(paint = currentPaint()) {
-    if (!hasPaintTrimRestrictions()) return "";
+    if (!shouldShowPaintTrimGuide()) return "";
     if (!paint) return "<span>색상을 선택하면 가능한 트림을 안내합니다.</span>";
     const configurations = getPaintConfigurations(paint);
     if (!configurations.length) return "<span>현재 판매 트림 확인이 필요한 색상입니다.</span>";
@@ -12810,9 +12860,16 @@ const vehicleCatalog = [
     const paint = currentPaint();
     if (paint && state.paintId !== paint.id) state.paintId = paint.id;
     if (!paint) return;
+    if (isDomesticVehicleSelection() && !getPaintConfigurations(paint).length) {
+      state.trim = "";
+      state.subTrim = "";
+      state.maxReachedStep = Math.min(state.maxReachedStep, 1);
+      if (state.step > 1) state.step = 1;
+      return;
+    }
     const group = availableModelGroups().find(item => item.name === state.trim);
     const incompatibleModel = Boolean(state.trim && (!group || !isModelAvailableForPaint(group, paint)));
-    const incompatibleTrim = Boolean(state.subTrim && (!group || !isTrimAvailableForPaint(state.subTrim, paint, state.trim)));
+    const incompatibleTrim = Boolean(state.subTrim && (!group || !group.trims.includes(state.subTrim) || !isTrimAvailableForPaint(state.subTrim, paint, state.trim)));
     if (incompatibleModel) state.trim = "";
     if (incompatibleModel || incompatibleTrim) {
       state.subTrim = "";
@@ -12827,7 +12884,7 @@ const vehicleCatalog = [
 
   function paintSwatchStyle(paint) {
     const swatchBackground = isTwoTonePaint(paint)
-      ? `linear-gradient(90deg, ${paint.hex} 0 50%, #17191c 50% 100%)`
+      ? `linear-gradient(90deg, ${paint.hex} 0 50%, ${paint.roofHex || "#17191c"} 50% 100%)`
       : paint.hex;
 
     return `background:${swatchBackground};border-color:${paint.border}`;
@@ -12843,8 +12900,14 @@ const vehicleCatalog = [
   function getCarPreviewImage(brandName, carName) {
     const brand = vehicleCatalog.find(item => item.name === brandName);
     const car = brand?.cars.find(item => item.name === carName);
-    const imagePath = car?.paints?.[0]?.image || fallbackImage;
-    return assetUrl(imagePath);
+    const preview = window.AUTOGENIE_VEHICLE_PREVIEW;
+    const paintId = brand?.market === "domestic" && preview?.enabled === true ? preview.byCar?.[`${brandName}|${carName}`] : "";
+    const paint = car?.paints?.find(item => item.id === paintId) || car?.paints?.[0];
+    const imageUrl = assetUrl(paint?.image || fallbackImage);
+    if (!paintId || !preview.imageVersion) return imageUrl;
+    const url = new URL(imageUrl, projectRootUrl);
+    url.searchParams.set("preview", preview.imageVersion);
+    return url.href;
   }
 
   function ensureSelection() {
@@ -12955,7 +13018,7 @@ const vehicleCatalog = [
         <div class="wizard-car-card car-adjust ${!state.carName ? "is-empty sequential-hidden" : ""} ${brand?.ownBackground ? "has-own-background" : ""} ${state.brandName === "테슬라" ? "is-tesla" : ""} ${state.brandName === "제네시스" ? "is-genesis" : ""} ${state.brandName === "기아" ? "is-kia" : ""} ${state.brandName === "기아" && state.carName === "봉고3" ? "is-kia-bongo3" : ""}" data-brand="${state.brandName || ""}" data-car="${state.carName || ""}">
           ${carImageMarkup}
 
-          <div class="paint-block ${!state.carName ? "is-disabled-block" : "has-monthly-discount"} ${hasPaintTrimRestrictions() ? "has-trim-guide" : ""} ${getPaintSurcharge(paint) ? "has-paint-surcharge" : ""}" data-option-section="paint">
+          <div class="paint-block ${!state.carName ? "is-disabled-block" : "has-monthly-discount"} ${shouldShowPaintTrimGuide() ? "has-trim-guide" : ""} ${isDomesticVehicleSelection() ? "domestic-paint-guide" : ""} ${getPaintSurcharge(paint) ? "has-paint-surcharge" : ""}" data-option-section="paint">
             <div class="paint-label">
               <span class="paint-label-title"><b>2</b> 외장 색상${state.carName ? `<em>${paints.length}개</em>` : ""}</span>
               <small class="paint-surcharge--header" data-paint-surcharge-amount ${getPaintSurcharge(paint) ? "" : "hidden"}>${getPaintSurcharge(paint) ? `추가금 +${getPaintSurcharge(paint).toLocaleString("ko-KR")}원` : ""}</small>
@@ -12972,7 +13035,7 @@ const vehicleCatalog = [
               </div>
               <div class="chosen-paint">
                 <strong>${paintChoiceHtml(paint)}</strong>
-                ${hasPaintTrimRestrictions() ? `<div class="paint-trim-guide" data-paint-trim-guide>${paintTrimGuideHtml(paint)}</div>` : ""}
+                ${shouldShowPaintTrimGuide() ? `<div class="paint-trim-guide" data-paint-trim-guide>${paintTrimGuideHtml(paint)}</div>` : ""}
               </div>
               <div class="monthly-discount-sticker" role="note" aria-label="${discountMonth}월 할인율 최대 ${discountRate}%">
                 <img class="monthly-discount-sticker__megaphone" src="images/discount-megaphone.png?v=20261028-match-ref-02" alt="" aria-hidden="true" width="52" height="64">
@@ -13000,6 +13063,7 @@ const vehicleCatalog = [
 
     return `
       <div class="wizard-step step-two">
+        ${isDomesticVehicleSelection() && currentPaint()?.trimImages ? selectedVehicleHtml() : ""}
         <div class="step-heading">
           <span>STEP 02</span>
           <h2>세부 모델을 선택해 주세요.</h2>
@@ -13016,7 +13080,7 @@ const vehicleCatalog = [
               return `
                 <section class="engine-model-card ${isActive ? "active" : ""}">
                   <button class="engine-model-main" type="button" data-engine-model="${group.name}" ${!isModelAvailableForPaint(group) ? 'disabled aria-disabled="true"' : ""}>
-                    <strong>${group.name}</strong>
+                    ${isDomesticVehicleSelection() ? `<span class="model-selection-label"><strong>${group.name}</strong>${!isModelAvailableForPaint(group) ? '<span class="paint-unavailable-note">선택한 색상은 해당 트림을 선택할 수 없습니다.</span>' : ''}</span>` : `<strong>${group.name}</strong>`}
                     <span class="radio-ui ${isActive ? "checked" : ""}" aria-hidden="true"></span>
                   </button>
 
@@ -13025,7 +13089,7 @@ const vehicleCatalog = [
                       ${group.trims.map(item => `
                         <button class="sub-trim-item ${item === state.subTrim ? "active" : ""}" type="button" data-sub-trim="${item}" ${!isTrimAvailableForPaint(item, currentPaint(), group.name) ? 'disabled aria-disabled="true"' : ""} ${ENABLE_TRIM_DETAIL_POPUP ? 'aria-haspopup="dialog" aria-controls="trimDetailModal"' : ''} aria-pressed="${item === state.subTrim}">
                           <span class="radio-ui ${item === state.subTrim ? "checked" : ""}" aria-hidden="true"></span>
-                          <strong>${item}</strong>
+                          ${isDomesticVehicleSelection() ? `<span class="model-selection-label"><strong>${item}</strong>${!isTrimAvailableForPaint(item, currentPaint(), group.name) ? '<span class="paint-unavailable-note">선택한 색상은 해당 트림을 선택할 수 없습니다.</span>' : ''}</span>` : `<strong>${item}</strong>`}
                         </button>
                       `).join("")}
                     </div>
@@ -13332,6 +13396,13 @@ const vehicleCatalog = [
     }
 
     ensureSelection();
+    if (!state.submitted && state.step > 1 && (!state.carName || !currentPaint())) {
+      state.step = 1;
+      state.maxReachedStep = 1;
+      state.trim = "";
+      state.subTrim = "";
+    }
+    reconcilePaintTrim();
 
     if (state.submitted) {
       indicator.hidden = true;
@@ -13735,7 +13806,7 @@ const vehicleCatalog = [
         content.querySelector(".paint-block")?.classList.toggle("has-paint-surcharge", paintPrice > 0);
         const guide = content.querySelector("[data-paint-trim-guide]");
         if (guide) {
-          guide.hidden = !hasPaintTrimRestrictions();
+          guide.hidden = !shouldShowPaintTrimGuide();
           guide.innerHTML = paintTrimGuideHtml(nextPaint);
         }
 

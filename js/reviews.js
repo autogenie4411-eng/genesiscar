@@ -70,6 +70,8 @@
       'es300','nx','rx','ux','lm','ls','id.4','id.5','atto 3','seal', '씰'
     ];
     const domesticShort = ['k3','k5','k8','k9','ev3','ev4','ev5','ev6','ev9','g70','g80','g90','gv60','gv70','gv80','레이'];
+    // 벤츠 모델의 플러그인 하이브리드/디젤 접미사(e, de, d)까지 정확히 인식합니다.
+    if (/(?:^|[^a-z0-9])(?:[ec]\s*(?:200|220|250|300|350|400|450)|s\s*(?:350|400|450|500|580))\s*-?\s*(?:de|e|d)(?=$|[^a-z0-9])/i.test(titleModel)) return 'import';
     if (importNames.some(name => has(titleModel, name)) || importModels.some(name => has(titleModel, name)) || importShort.some(name => has(titleModel, name))) return 'import';
     if (domesticNames.some(name => has(titleModel, name)) || domesticModels.some(name => has(titleModel, name)) || domesticShort.some(name => has(titleModel, name))) return 'domestic';
     if (importNames.some(name => has(brand, name))) return 'import';
@@ -237,6 +239,9 @@
   const SOURCE_CACHE_TTL = 30 * 60 * 1000;
   const LOCAL_FRESH_DAYS = 14; // 오래된 JSON을 최신 후기처럼 먼저 노출하지 않는다.
 
+  const REVIEW_ARCHIVE_CACHE_KEY = `autogenie-review-archive-v2:제네시스:${new URL('.', location.href).pathname}`;
+  let activeReviewArchive = null;
+  let reviewArchiveSignature = '';
   let renderedReviews = []; // 최근 24개월 전체 후기
   let rollingReviews = [];  // 메인 화면 최근 24개월
   let reviewDialog = null;
@@ -376,11 +381,7 @@
       .filter(isGenesisReview)
       .map((review, inputOrder) => ({ ...review, _inputOrder: inputOrder, _timestamp: reviewTimestamp(review) }))
       .filter(review => review._timestamp >= cutoff.getTime())
-      .sort((a, b) => {
-        const ao = Number.isFinite(Number(a.sourceOrder)) ? Number(a.sourceOrder) : a._inputOrder;
-        const bo = Number.isFinite(Number(b.sourceOrder)) ? Number(b.sourceOrder) : b._inputOrder;
-        return ao - bo;
-      });
+      .sort((a, b) => activeReviewArchive?.order === "date-descending-archive-order-for-ties" ? b._timestamp - a._timestamp || a._inputOrder - b._inputOrder : (Number.isFinite(Number(a.sourceOrder)) ? Number(a.sourceOrder) : a._inputOrder) - (Number.isFinite(Number(b.sourceOrder)) ? Number(b.sourceOrder) : b._inputOrder));
 
     const seen = new Set();
     const unique = [];
@@ -1059,6 +1060,7 @@
     }
 
     section.hidden = false;
+    destroyReviewSwiper();
     track.innerHTML = rollingReviews.length ? carouselCardMarkup(rollingReviews) : `<article class="review-card review-card--loading"><div class="review-card__body"><strong>최근 24개월 출고 후기가 없습니다.</strong><p>전체 후기 보기를 누르면 이전 출고 후기도 확인할 수 있습니다.</p></div></article>`;
     bindImageFallbacks();
 
@@ -1274,43 +1276,85 @@
     return prepareReviews(items);
   }
 
+  function validateReviewArchive(payload) {
+    if (!payload || !Array.isArray(payload.reviews) || !payload.reviews.length) return null;
+    const items = payload.reviews;
+    if (payload.count !== undefined && payload.count !== items.length) return null;
+    const ids = new Set();
+    for (const item of items) {
+      const id = String(item?.id ?? '');
+      if (!id || ids.has(id) || typeof item.title !== 'string' || !item.title.trim() || !parseReviewDate(item.date)) return null;
+      ids.add(id);
+    }
+    return payload;
+  }
+
+  function readEmbeddedReviewArchive() {
+    try {
+      return validateReviewArchive(JSON.parse(document.getElementById('autogenieReviewSnapshot')?.textContent || 'null'));
+    } catch { return null; }
+  }
+
+  function readLastGoodReviewArchive() {
+    try {
+      return validateReviewArchive(JSON.parse(localStorage.getItem(REVIEW_ARCHIVE_CACHE_KEY) || 'null'));
+    } catch { return null; }
+  }
+
+  function saveLastGoodReviewArchive(payload) {
+    try {
+      const serialized = JSON.stringify(payload);
+      // 큰 상세 HTML 때문에 브라우저 저장 한도를 넘겨도 배포본 내장 데이터로 정상 표시합니다.
+      if (serialized.length <= 2_000_000) localStorage.setItem(REVIEW_ARCHIVE_CACHE_KEY, serialized);
+    } catch { /* 저장소 차단/용량 초과 시 내장 스냅샷을 사용 */ }
+  }
+
+  function archiveRevision(payload) {
+    return Date.parse(payload?.generatedAt || '') || 0;
+  }
+
+  function applyReviewArchive(payload) {
+    if (!payload) return false;
+    // 배포 전환 중 이전 JSON이 응답하더라도 최신 정상 후기를 되돌리지 않습니다.
+    if (activeReviewArchive && archiveRevision(payload) < archiveRevision(activeReviewArchive)) return false;
+    const previous = activeReviewArchive;
+    activeReviewArchive = payload;
+    const prepared = prepareReviews(payload.reviews);
+    if (renderedReviews.length && !prepared.length) { activeReviewArchive = previous; return false; }
+    if (rollingReviews.length && !prepared.some(review => reviewTimestamp(review) >= rollingStartDate().getTime())) { activeReviewArchive = previous; return false; }
+    const signature = JSON.stringify([payload.order, payload.reviews]);
+    if (signature !== reviewArchiveSignature) {
+      renderReviewList(payload.reviews);
+      reviewArchiveSignature = signature;
+    }
+    activeReviewArchive = payload;
+    saveLastGoodReviewArchive(payload);
+    return true;
+  }
+
   async function loadReviews() {
-    const cachedReviews = readVerifiedReviewsCache();
-    if (cachedReviews.length) renderReviewList(cachedReviews);
-
-    let deployedReviews = [];
-    for (let attempt = 1; attempt <= 3; attempt++) {
-      try {
-        deployedReviews = await fetchDeployedReviews();
-        if (deployedReviews.length) break;
-        throw new Error('제네시스 후기 데이터가 비어 있습니다.');
-      } catch (error) {
-        console.warn(`reviews.json 불러오기 ${attempt}/3회 실패`, error);
-        if (attempt < 3) await new Promise(resolve => setTimeout(resolve, attempt * 500));
-      }
+    // 네트워크 요청을 기다리지 않고, 현재 배포본 또는 더 최신의 마지막 정상 아카이브부터 표시합니다.
+    const embedded = readEmbeddedReviewArchive();
+    const cached = readLastGoodReviewArchive();
+    const first = cached && (!embedded || archiveRevision(cached) > archiveRevision(embedded)) ? cached : embedded;
+    const second = first === cached ? embedded : cached;
+    if (!applyReviewArchive(first) && !applyReviewArchive(second)) {
+      renderReviewList(FALLBACK_REVIEWS);
     }
 
-    // 정상 보유 이력이 있는데 배포 데이터만 4개로 돌아갔다면 최신 기록을 유지한다.
-    // 기간은 prepareReviews()가 매번 최근 24개월 기준으로 재검증한다.
-    const looksIncomplete = cachedReviews.length >= 8 &&
-      deployedReviews.length < Math.max(5, Math.floor(cachedReviews.length * 0.6));
-    if (looksIncomplete) {
-      console.warn(`후기 급감 감지: 브라우저 보존 ${cachedReviews.length}건 / 배포 JSON ${deployedReviews.length}건. 이전 정상 데이터를 유지합니다.`);
-      renderReviewList(cachedReviews);
-      return;
-    }
-
-    const reviews = deployedReviews.length ? deployedReviews
-      : cachedReviews.length ? cachedReviews : prepareReviews(FALLBACK_REVIEWS);
-    if (reviews.length) {
-      renderReviewList(reviews);
-      if (deployedReviews.length) saveVerifiedReviewsCache(reviews);
-    } else {
-      section.hidden = hiddenAfterBrandSelection;
-      destroyReviewSwiper();
-      track.innerHTML = `<article class="review-card review-card--loading">
-        <div class="review-card__body"><strong>출고 후기를 준비하고 있습니다.</strong>
-        <p>후기 데이터를 다시 불러와 주세요.</p></div></article>`;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch(`data/reviews.json?v=${Date.now()}`, { cache: 'no-store', signal: controller.signal });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const payload = validateReviewArchive(await response.json());
+      if (!payload) throw new Error('유효하지 않은 후기 아카이브');
+      // 성공한 최신 데이터만 교체. 같은 내용이면 Swiper와 현재 카드를 유지합니다.
+      applyReviewArchive(payload);
+    } catch (error) {
+      console.warn('후기 갱신 실패: 기존 정상 후기를 유지합니다.', error);
+    } finally {
+      clearTimeout(timer);
     }
   }
 
