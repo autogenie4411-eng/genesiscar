@@ -12863,8 +12863,10 @@ const vehicleCatalog = [
     if (isDomesticVehicleSelection() && !getPaintConfigurations(paint).length) {
       state.trim = "";
       state.subTrim = "";
-      state.maxReachedStep = Math.min(state.maxReachedStep, 1);
-      if (state.step > 1) state.step = 1;
+      if (state.step !== 4) {
+        state.maxReachedStep = Math.min(state.maxReachedStep, 1);
+        if (state.step > 1) state.step = 1;
+      }
       return;
     }
     const group = availableModelGroups().find(item => item.name === state.trim);
@@ -12873,8 +12875,10 @@ const vehicleCatalog = [
     if (incompatibleModel) state.trim = "";
     if (incompatibleModel || incompatibleTrim) {
       state.subTrim = "";
-      state.maxReachedStep = Math.min(state.maxReachedStep, 2);
-      if (state.step > 2) state.step = 2;
+      if (state.step !== 4) {
+        state.maxReachedStep = Math.min(state.maxReachedStep, 2);
+        if (state.step > 2) state.step = 2;
+      }
     }
   }
 
@@ -13396,7 +13400,8 @@ const vehicleCatalog = [
     }
 
     ensureSelection();
-    if (!state.submitted && state.step > 1 && (!state.carName || !currentPaint())) {
+    // 바로 견적신청으로 여는 정보입력 단계는 차량·색상 선택 없이도 유지합니다.
+    if (!state.submitted && state.step > 1 && state.step < 4 && (!state.carName || !currentPaint())) {
       state.step = 1;
       state.maxReachedStep = 1;
       state.trim = "";
